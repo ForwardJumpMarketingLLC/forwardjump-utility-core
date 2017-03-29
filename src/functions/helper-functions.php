@@ -3,7 +3,7 @@
  * Helper Functions
  *
  * @package     ForwardJump\Utility
- * @since       1.0.0
+ * @since       0.1.0
  * @author      Tim Jensen
  * @link        https://www.timjensen.us
  * @license     GNU General Public License 2.0+
@@ -12,51 +12,22 @@
 namespace ForwardJump\Utility;
 
 /**
- * Get the post type labels configuration.
- *
- * @since 1.0.0
- *
- * @param string $post_type
- * @param string $singular_label
- * @param string $plural_label
- * @param string $description
- *
- * @return array
- */
-function get_post_type_labels_config( $post_type, $singular_label, $plural_label, $description ) {
-	return array(
-		'name'               => _x( $plural_label, 'post type general name', FJ_UTILITY_TEXT_DOMAIN ),
-		'singular_name'      => _x( $singular_label, 'post type singular name', FJ_UTILITY_TEXT_DOMAIN ),
-		'menu_name'          => _x( $description, 'admin menu', FJ_UTILITY_TEXT_DOMAIN ),
-		'name_admin_bar'     => _x( $singular_label, 'add new on admin bar', FJ_UTILITY_TEXT_DOMAIN ),
-		'add_new'            => _x( 'Add New', $post_type, FJ_UTILITY_TEXT_DOMAIN ),
-		'add_new_item'       => __( 'Add New ' . $singular_label, FJ_UTILITY_TEXT_DOMAIN ),
-		'new_item'           => __( 'New ' . $singular_label, FJ_UTILITY_TEXT_DOMAIN ),
-		'edit_item'          => __( 'Edit ' . $singular_label, FJ_UTILITY_TEXT_DOMAIN ),
-		'view_item'          => __( 'View ' . $singular_label, FJ_UTILITY_TEXT_DOMAIN ),
-		'all_items'          => __( 'All ' . $plural_label, FJ_UTILITY_TEXT_DOMAIN ),
-		'search_items'       => __( 'Search ' . $plural_label, FJ_UTILITY_TEXT_DOMAIN ),
-		'parent_item_colon'  => __( 'Parent ' . $singular_label . ':', FJ_UTILITY_TEXT_DOMAIN ),
-		'not_found'          => __( 'No ' . $plural_label . ' found.', FJ_UTILITY_TEXT_DOMAIN ),
-		'not_found_in_trash' => __( 'No ' . $plural_label . ' found in Trash.', FJ_UTILITY_TEXT_DOMAIN ),
-	);
-}
-
-/**
  * Retrieves all post meta data according to the structure in the $config array.
  *
  * Provides a convenient and more performant alternative to ACF's `get_field()`.
  *
  * This function is especially useful when working with ACF repeater fields and flexible content layouts.
  *
- * @param integer $post_id Post ID
- * @param array   $config  An array that represents the structure of the custom fields.
+ * @version 1.1.1
+ *
+ * @param integer $post_id Required. Post ID.
+ * @param array   $config  Required. An array that represents the structure of the custom fields.
  *                         Follows the same format as the ACF export field groups array.
  * @param string  $prefix  The necessary meta_key prefix is generated automatically as the function iterates
  *
  * @return array
  */
-function get_all_custom_field_meta( $post_id, $config = [], $prefix = '' ) {
+function get_all_custom_field_meta( $post_id, $config, $prefix = '' ) {
 
 	$results = array();
 
@@ -80,11 +51,14 @@ function get_all_custom_field_meta( $post_id, $config = [], $prefix = '' ) {
 			$layout_keys = array_flip( wp_list_pluck( $field['layouts'], 'name' ) );
 
 			foreach ( $field_value as $key => $layout_row ) {
-				$prefix                      = $meta_key . "_{$key}_";
-				$new_config                  = $field['layouts'][ $layout_keys[ $layout_row ] ]['sub_fields'];
-				$results[ $field['name'] ][] = array_merge( [ 'acf_fc_layout' => $layout_row ], get_all_custom_field_meta( $post_id, $new_config, $prefix ) );
-				$prefix                      = ''; // reset
+				$prefix     = $meta_key . "_{$key}_";
+				$new_config = $field['layouts'][ $layout_keys[ $layout_row ] ]['sub_fields'];
+
+				$results[] = array_merge( [ 'acf_fc_layout' => $layout_row ], get_all_custom_field_meta( $post_id, $new_config, $prefix ) );
 			}
+
+			// reset
+			$prefix = '';
 
 		} elseif ( isset( $field['sub_fields'] ) ) { // We're dealing with repeater fields.
 
@@ -92,8 +66,10 @@ function get_all_custom_field_meta( $post_id, $config = [], $prefix = '' ) {
 				$prefix                      = $meta_key . "_{$i}_";
 				$new_config                  = $field['sub_fields'];
 				$results[ $field['name'] ][] = get_all_custom_field_meta( $post_id, $new_config, $prefix );
-				$prefix                      = ''; // reset
 			}
+
+			// reset
+			$prefix = '';
 
 		} else {
 			$results[ $field['name'] ] = $field_value;

@@ -47,15 +47,14 @@ function autoload() {
 
 	$files = array(
 //		'custom/post-types',
-//		'custom-fields/admin',
 //		'functions/genesis',
 		'functions/gravity-forms',
-//		'functions/helper-functions',
-//		'functions/advanced-custom-fields',
+		'functions/helper-functions',
 		'functions/apply-settings',
 		'functions/sandbox',
 //		'functions/shortcodes',
-		'settings/bootstrap',
+		'custom-post-types/module',
+		'settings/module',
 	);
 
 	foreach ( $files as $file ) {

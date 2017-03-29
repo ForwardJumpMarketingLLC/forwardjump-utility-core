@@ -1,9 +1,12 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: timothyjensen
- * Date: 3/27/17
- * Time: 1:58 PM
+ * Settings Module
+ *
+ * @package     ForwardJump\Utility\Settings
+ * @since       0.1.0
+ * @author      Tim Jensen
+ * @link        https://www.timjensen.us
+ * @license     GNU General Public License 2.0+
  */
 
 namespace ForwardJump\Utility\Settings;
@@ -12,9 +15,6 @@ namespace ForwardJump\Utility\Settings;
  * Class Settings_Page
  *
  * @package ForwardJump\Utility\Settings
- *
- * @TODO reorder properties
- * @TODO add docblocks for properties
  */
 class Settings_Page {
 

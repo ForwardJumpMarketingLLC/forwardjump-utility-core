@@ -1,11 +1,9 @@
 <?php
 /**
- * Title
+ * Settings Module
  *
- * Description
- *
- * @package     ${NAMESPACE}
- * @since       1.0.0
+ * @package     ForwardJump\Utility
+ * @since       0.1.0
  * @author      Tim Jensen
  * @link        https://www.timjensen.us
  * @license     GNU General Public License 2.0+
