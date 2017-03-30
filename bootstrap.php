@@ -52,10 +52,10 @@ function autoload() {
 		'functions/helper-functions',
 		'functions/apply-settings',
 		'functions/sandbox',
-//		'functions/shortcodes',
 		'custom-post-types/module',
 		'custom-taxonomies/module',
 		'settings/module',
+		'shortcodes/module'
 	);
 
 	foreach ( $files as $file ) {

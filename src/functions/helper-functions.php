@@ -9,7 +9,7 @@
  * @license     GNU General Public License 2.0+
  */
 
-namespace ForwardJump\Utility;
+namespace ForwardJump\Utility\Functions;
 
 /**
  * Retrieves all post meta data according to the structure in the $config array.

@@ -8,7 +8,7 @@
  * @since        1.0.0
  */
 
-namespace ForwardJump\Utility\GravityForms;
+namespace ForwardJump\Utility\Functions\GravityForms;
 
 /**
  * Enforce anti-spam honeypot on all Gravity forms.

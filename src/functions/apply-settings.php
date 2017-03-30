@@ -9,9 +9,7 @@
  * @license     GNU General Public License 2.0+
  */
 
-namespace ForwardJump\Utility\ApplySettings;
-
-use function ForwardJump\Utility\AdvancedCustomFields\deactivate_acf;
+namespace ForwardJump\Utility\Functions\ApplySettings;
 
 add_action( 'plugins_loaded', __NAMESPACE__ . '\apply_enabled_options', 2 );
 /**
@@ -30,7 +28,7 @@ function apply_enabled_options() {
 
 	if ( isset( $fj_options['gf_honeypot'] ) && 'on' === $fj_options['gf_honeypot'] ) {
 
-		add_filter( 'gform_form_post_get_meta', 'ForwardJump\Utility\GravityForms\enforce_honeypots' );
+		add_filter( 'gform_form_post_get_meta', 'ForwardJump\Utility\Functions\GravityForms\enforce_honeypots' );
 	}
 
 	if ( isset( $fj_options['gf_hidden_labels'] ) && 'on' === $fj_options['gf_hidden_labels'] ) {
