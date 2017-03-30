@@ -5,7 +5,7 @@
  * @package     ForwardJump\Utility\Settings
  * @since       0.1.0
  * @author      Tim Jensen
- * @link        https://www.timjensen.us
+ * @link        https://forwardjump.com/
  * @license     GNU General Public License 2.0+
  */
 
@@ -100,14 +100,14 @@ class Settings_Page {
 	 *
 	 * @var array
 	 */
-	private $metabox_fields = array();
+	private $metabox_fields = [];
 
 	/**
 	 * Configuration file.
 	 *
 	 * @var array
 	 */
-	private $config = array();
+	private $config = [];
 
 	/**
 	 * View file.
@@ -248,7 +248,7 @@ class Settings_Page {
 	 * @since 0.1.0
 	 */
 	protected function set_metabox_fields() {
-		$this->metabox_fields = ! empty( $this->config['metabox_fields'] ) ? $this->config['metabox_fields'] : array();
+		$this->metabox_fields = ! empty( $this->config['metabox_fields'] ) ? $this->config['metabox_fields'] : [];
 	}
 
 	/**

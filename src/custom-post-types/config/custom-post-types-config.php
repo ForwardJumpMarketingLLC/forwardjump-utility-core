@@ -5,7 +5,7 @@
  * @package     ForwardJump\Utility\CustomPostTypes
  * @since       0.1.1
  * @author      Tim Jensen
- * @link        https://www.timjensen.us
+ * @link        https://forwardjump.com/
  * @license     GNU General Public License 2.0+
  */
 
@@ -21,13 +21,13 @@ namespace ForwardJump\Utility\CustomPostTypes\Config;
 return [
 	[
 		'post_type' => 'portfolio',
-		'args'  => [
-			'label' => 'Portfolio Label',
-			'labels'    => [
+		'args'      => [
+			'label'  => 'Portfolio Label',
+			'labels' => [
 				'singular' => 'Portfolio Item',
-				'plural' => 'Portfolio Items',
+				'plural'   => 'Portfolio Items',
 			],
-			'public'    => true,
+			'public' => true,
 		],
-	]
+	],
 ];

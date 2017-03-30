@@ -5,7 +5,7 @@
  * @package     ForwardJump\Utility
  * @since       0.1.0
  * @author      Tim Jensen
- * @link        https://www.timjensen.us
+ * @link        https://forwardjump.com/
  * @license     GNU General Public License 2.0+
  */
 

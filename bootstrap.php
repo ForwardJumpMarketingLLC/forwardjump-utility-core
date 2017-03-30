@@ -4,7 +4,7 @@
  * Plugin URI: https://bitbucket.org/forwardjump/forwardjump-utility-core
  * Description: This plugin contains your site's custom functionality so that it is theme independent.
  *
- * Version: 0.1.0
+ * Version: 0.1.2
  *
  * Author: Tim Jensen
  * Author URI: https://forwardjump.com/
@@ -54,6 +54,7 @@ function autoload() {
 		'functions/sandbox',
 //		'functions/shortcodes',
 		'custom-post-types/module',
+		'custom-taxonomies/module',
 		'settings/module',
 	);
 
