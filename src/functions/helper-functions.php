@@ -23,7 +23,7 @@ namespace ForwardJump\Utility\Functions;
  * @param integer $post_id Required. Post ID.
  * @param array   $config  Required. An array that represents the structure of the custom fields.
  *                         Follows the same format as the ACF export field groups array.
- * @param string  $prefix  The necessary meta_key prefix is generated automatically as the function iterates
+ * @param string  $prefix  The necessary meta_key prefix is generated automatically as the function iterates.
  *
  * @return array
  */

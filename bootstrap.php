@@ -2,24 +2,29 @@
 /**
  * Plugin Name: ForwardJump Utility - CORE
  * Plugin URI: https://bitbucket.org/forwardjump/forwardjump-utility-core
- * Description: This plugin contains your site's custom functionality so that it is theme independent.
+ * Description: The ForwardJump core functionality plugin.
  *
  * Version: 0.1.2
  *
  * Author: Tim Jensen
  * Author URI: https://forwardjump.com/
  *
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
- * General Public License version 2, as published by the Free Software Foundation.  You may NOT assume
- * that you can use any other version of the GPL.
+ * This program is free software; you can redistribute it and/or modify it under the
+ * terms of the GNU General Public License version 2, as published by the
+ * Free Software Foundation.  You may NOT assume that you can use any other
+ * version of the GPL.
  *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
- * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+ * or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * Text Domain:     forwardjump-utility
+ * Text Domain: forwardjump-utility
  *
  * BitBucket Plugin URI: https://bitbucket.org/forwardjump/forwardjump-utility-core
  * BitBucket branch: master
+ *
+ * @package ForwardJump\Utility
+ * PHP Version 5.4
  */
 
 namespace ForwardJump\Utility;
@@ -45,9 +50,7 @@ function autoload() {
 		require_once FJ_UTILITY_DIR . '/vendor/CMB2/init.php';
 	}
 
-	$files = array(
-//		'custom/post-types',
-//		'functions/genesis',
+	$files = [
 		'functions/gravity-forms',
 		'functions/helper-functions',
 		'functions/apply-settings',
@@ -55,18 +58,20 @@ function autoload() {
 		'custom-post-types/module',
 		'custom-taxonomies/module',
 		'settings/module',
-		'shortcodes/module'
-	);
+		'shortcodes/module',
+	];
 
 	foreach ( $files as $file ) {
-		if ( file_exists( $filepath = FJ_UTILITY_DIR . 'src/' . $file . '.php' ) ) {
-			include $filepath;
+
+		$filepath = FJ_UTILITY_DIR . 'src/' . $file . '.php';
+
+		if ( file_exists( $filepath ) ) {
+			include_once $filepath;
 		}
 	}
 }
 
 autoload();
-
 
 register_activation_hook( FJ_UTILITY_FILE, __NAMESPACE__ . '\activate_the_plugin' );
 /**

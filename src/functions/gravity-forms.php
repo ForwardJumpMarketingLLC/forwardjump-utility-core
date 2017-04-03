@@ -13,7 +13,7 @@ namespace ForwardJump\Utility\Functions\GravityForms;
 /**
  * Enforce anti-spam honeypot on all Gravity forms.
  *
- * @param array $form
+ * @param array $form Current Gravity Form.
  *
  * @return array $form
  */
