@@ -21,7 +21,7 @@ function apply_enabled_options() {
 
 	if ( isset( $fj_options['header_scripts'] ) ) {
 
-		add_action( 'wp_head', function() use ( $fj_options ) {
+		add_action( 'wp_head', function () use ( $fj_options ) {
 			echo $fj_options['header_scripts'];
 		} );
 	}

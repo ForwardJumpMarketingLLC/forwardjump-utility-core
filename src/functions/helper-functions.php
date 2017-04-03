@@ -91,17 +91,21 @@ function get_all_custom_field_meta( $post_id, $config, $prefix = '' ) {
  * @return string
  */
 function get_post_excerpt( $post_id, $word_length = 50, $ellipsis = '&hellip;', $more_link = true ) {
+
 	$post = get_post( $post_id );
 
 	if ( $post->post_excerpt ) {
+
 		$excerpt = $post->post_excerpt;
 	} else {
+
 		$excerpt = strip_tags( strip_shortcodes( $post->post_content ) );
 		$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
 
 		$words = explode( ' ', $excerpt, $word_length + 1 );
 
 		if ( count( $words ) > $word_length ) {
+
 			array_pop( $words );
 
 			$excerpt = implode( ' ', $words ) . $ellipsis;
@@ -114,7 +118,10 @@ function get_post_excerpt( $post_id, $word_length = 50, $ellipsis = '&hellip;', 
 		return $excerpt;
 	}
 
-	$more_link = sprintf( '<a href="%s" class="more-link read-more-link">%s</a>', get_the_permalink( $post->ID ), apply_filters( 'get_post_excerpt_read_more_text', 'Read More' ) );
+	$more_link = sprintf( '<a href="%s" class="more-link read-more-link">%s</a>',
+		get_the_permalink( $post->ID ),
+		apply_filters( 'get_post_excerpt_read_more_text', 'Read More' )
+	);
 
 	return $excerpt . apply_filters( 'get_post_excerpt_read_more_link', $more_link );
 }

@@ -44,9 +44,7 @@ define( 'FJ_UTILITY_FILE', __FILE__ );
  */
 function autoload() {
 
-	if ( file_exists( FJ_UTILITY_DIR . '/vendor/cmb2/init.php' ) ) {
-		require_once FJ_UTILITY_DIR . '/vendor/cmb2/init.php';
-	} elseif ( file_exists( FJ_UTILITY_DIR . '/vendor/CMB2/init.php' ) ) {
+	if ( file_exists( FJ_UTILITY_DIR . '/vendor/CMB2/init.php' ) ) {
 		require_once FJ_UTILITY_DIR . '/vendor/CMB2/init.php';
 	}
 
