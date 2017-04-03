@@ -54,7 +54,7 @@ class Custom_Post_Types {
 	 *
 	 * @since 0.1.1
 	 *
-	 * @param array $config
+	 * @param array $config Configuration array for the custom post type.
 	 */
 	public function __construct( array $config ) {
 		$this->config    = $config;

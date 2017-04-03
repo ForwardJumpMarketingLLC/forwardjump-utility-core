@@ -2,11 +2,11 @@
 /**
  * Custom Taxonomies Handler
  *
- * @package     ForwardJump\Utility
- * @since       0.1.2
- * @author      Tim Jensen
- * @link        https://forwardjump.com/
- * @license     GNU General Public License 2.0+
+ * @package ForwardJump\Utility
+ * @author  Tim Jensen <tim@timjensen.us>
+ * @license GNU General Public License 2.0+
+ * @link    https://forwardjump.com/
+ * @since   0.1.2
  */
 
 namespace ForwardJump\Utility\CustomTaxonomies;
@@ -14,9 +14,8 @@ namespace ForwardJump\Utility\CustomTaxonomies;
 /**
  * Class Custom_Taxonomies
  *
- * @since 0.1.2
- *
  * @package ForwardJump\Utility\CustomTaxonomies
+ * @since   0.1.2
  */
 class Custom_Taxonomies {
 
@@ -59,7 +58,7 @@ class Custom_Taxonomies {
 	/**
 	 * Custom_Taxonomies constructor.
 	 *
-	 * @param array $config
+	 * @param array $config Configuration array for the taxonomy.
 	 *
 	 * @since 0.1.2
 	 */
