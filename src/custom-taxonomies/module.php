@@ -11,4 +11,4 @@
 
 namespace ForwardJump\Utility\CustomTaxonomies;
 
-include_once plugin_dir_path( __FILE__ ) . 'class-custom-taxonomies.php';
+include_once __DIR__ . '/class-custom-taxonomies.php';

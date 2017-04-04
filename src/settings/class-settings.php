@@ -121,7 +121,7 @@ class Settings_Page {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param array $config
+	 * @param array $config Configuration array for the settings page.
 	 */
 	public function __construct( $config ) {
 		$this->config = (array) $config;
@@ -293,14 +293,14 @@ class Settings_Page {
 			__( $this->menu_title ),
 			$this->capability,
 			$this->menu_slug,
-			[ $this, 'admin_page_display' ]
+			[ $this, 'admin_page_display' ],
 		];
 
-		if ( 'submenu' == $this->menu_page_type && ! empty( $this->menu_page_parent ) ) {
+		if ( 'submenu' === $this->menu_page_type && ! empty( $this->menu_page_parent ) ) {
 			array_unshift( $menu_page_args, $this->menu_page_parent );
 		}
 
-		if ( 'menu' == $this->menu_page_type ) {
+		if ( 'menu' === $this->menu_page_type ) {
 			array_push( $menu_page_args, $this->menu_page_icon, $this->menu_page_priority );
 		}
 
@@ -332,9 +332,8 @@ class Settings_Page {
 			'hookup'     => false,
 			'cmb_styles' => true,
 			'show_on'    => array(
-				// These are important, don't remove
 				'key'   => 'options-page',
-				'value' => array( $this->option_name, )
+				'value' => array( $this->option_name ),
 			),
 		) );
 
@@ -348,8 +347,8 @@ class Settings_Page {
 	 *
 	 * @since  0.1.0
 	 *
-	 * @param  int   $object_id Option key
-	 * @param  array $updated   Array of updated fields
+	 * @param  int   $object_id Option key.
+	 * @param  array $updated   Array of updated fields.
 	 *
 	 * @return void
 	 */
@@ -363,7 +362,8 @@ class Settings_Page {
 			$this->option_name . '-notices',
 			'',
 			__( 'Settings updated.', FJ_UTILITY_TEXT_DOMAIN ),
-			'updated' );
+			'updated'
+		);
 
 		settings_errors( $this->option_name . '-notices' );
 	}

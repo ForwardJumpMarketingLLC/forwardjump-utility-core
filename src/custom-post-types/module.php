@@ -12,4 +12,4 @@
 
 namespace ForwardJump\Utility\CustomPostTypes;
 
-include_once plugin_dir_path( __FILE__ ) . '/class-custom-post-types.php';
+include_once __DIR__ . '/class-custom-post-types.php';
