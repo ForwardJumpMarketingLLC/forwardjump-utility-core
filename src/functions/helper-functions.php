@@ -125,3 +125,29 @@ function get_post_excerpt( $post_id, $word_length = 50, $ellipsis = '&hellip;', 
 
 	return $excerpt . apply_filters( 'get_post_excerpt_read_more_link', $more_link );
 }
+
+/**
+ * Adds an additional metabox to the Archive Settings page for the specified post type.
+ *
+ * @param string   $post_type        Slug of the registered post type.
+ * @param string   $title            Metabox title.
+ * @param callable $metabox_callback Callback for filling the metabox.
+ */
+function add_genesis_archive_settings_metabox( $post_type, $title, $metabox_callback ) {
+
+	static $count = 0;
+	$count++;
+
+	$args = [
+		'id' => "add_genesis_archive_settings_metabox_{$count}",
+		'title' => __( $title, FJ_UTILITY_TEXT_DOMAIN ),
+		'callback' => $metabox_callback,
+		'screen' => "{$post_type}_page_genesis-cpt-archive-new-post-type",
+		'context' => 'main',
+	];
+
+	add_action( 'genesis_cpt_archives_settings_metaboxes', function () use ( $args ) {
+
+		add_meta_box( $args['id'], $args['title'], $args['callback'], $args['screen'], $args['context'] );
+	} );
+}
