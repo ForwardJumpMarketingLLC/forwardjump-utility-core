@@ -52,7 +52,17 @@ class CMB2 extends CMB2_Base {
 	protected $mb_defaults = array(
 		'id'               => '',
 		'title'            => '',
-		'object_types'     => array(), // Post type
+		// Post type slug, or 'user', 'term', 'comment', or 'options-page'
+		'object_types'     => array(),
+		 /*
+		 * The context within the screen where the boxes should display. Available contexts vary
+		 * from screen to screen. Post edit screen contexts include 'normal', 'side', and 'advanced'.
+		 *
+		 * For placement in locations outside of a metabox, other options include:
+		 * 'form_top', 'before_permalink', 'after_title', 'after_editor'
+		 *
+		 * Comments screen contexts include 'normal' and 'side'. Default is 'normal'.
+		 */
 		'context'          => 'normal',
 		'priority'         => 'high',
 		'show_names'       => true, // Show field names on the left
@@ -225,6 +235,31 @@ class CMB2 extends CMB2_Base {
 		}
 
 		/**
+		 * Add our context classes for non-standard metaboxes.
+		 *
+		 * @since 2.2.4
+		 */
+		if ( $this->is_alternate_context_box() ) {
+
+			// Include custom class if requesting no title.
+			if ( ! $this->prop( 'title' ) && ! $this->prop( 'remove_box_wrap' ) ) {
+				$context[] = 'cmb2-context-wrap-no-title';
+			}
+
+			// Include a generic context wrapper.
+			$context[] = 'cmb2-context-wrap';
+
+			// Include a context-type based context wrapper.
+			$context[] = 'cmb2-context-wrap-' . $this->prop( 'context' );
+
+			// Include an ID based context wrapper as well.
+			$context[] = 'cmb2-context-wrap-' . $this->prop( 'id' );
+
+			// And merge all the classes back into the array.
+			$classes = array_merge( $classes, $context );
+		}
+
+		/**
 		 * Globally filter box wrap classes
 		 *
 		 * @since 2.2.2
@@ -236,6 +271,9 @@ class CMB2 extends CMB2_Base {
 
 		// Clean up.
 		$classes = array_map( 'strip_tags', array_filter( $classes ) );
+
+		// Remove any duplicates.
+		$classes = array_unique( $classes );
 
 		// Make a string.
 		return implode( ' ', $classes );
@@ -479,13 +517,13 @@ class CMB2 extends CMB2_Base {
 			$field = $this->get_new_field( $field_args, $field_group );
 		}
 
-		$type = new CMB2_Types( $field );
+		$types = new CMB2_Types( $field );
 
 		if ( $field_group ) {
-			$type->iterator = $field_group->index;
+			$types->iterator = $field_group->index;
 		}
 
-		$this->hidden_fields[] = $type;
+		$this->hidden_fields[] = $types;
 
 		return $field;
 	}
@@ -915,6 +953,10 @@ class CMB2 extends CMB2_Base {
 			$type = 'term';
 		}
 
+		if ( defined( 'DOING_AJAX' ) && isset( $_POST['action'] ) && 'add-tag' === $_POST['action'] ) {
+			$type = 'term';
+		}
+
 		return $type;
 	}
 
@@ -961,7 +1003,7 @@ class CMB2 extends CMB2_Base {
 		$field_id = is_string( $field ) ? $field : $field['id'];
 
 		$parent_field_id = ! empty( $field_group ) ? $field_group->id() : '';
-		$ids = $this->get_field_ids( $field_id, $parent_field_id, true );
+		$ids = $this->get_field_ids( $field_id, $parent_field_id );
 
 		if ( ! $ids ) {
 			return false;
@@ -1079,9 +1121,20 @@ class CMB2 extends CMB2_Base {
 			return false;
 		}
 
-		if ( 'oembed' === $field['type'] ) {
-			// Initiate oembed Ajax hooks
-			cmb2_ajax();
+		// Perform some field-type-specific initiation actions.
+		switch ( $field['type'] ) {
+			case 'file':
+			case 'file_list':
+
+				// Initiate attachment JS hooks
+				add_filter( 'wp_prepare_attachment_for_js', array( 'CMB2_Type_File_Base', 'prepare_image_sizes_for_js' ), 10, 3 );
+				break;
+
+			case 'oembed':
+
+				// Initiate oembed Ajax hooks
+				cmb2_ajax();
+				break;
 		}
 
 		if ( isset( $field['column'] ) && false !== $field['column'] ) {
@@ -1304,6 +1357,17 @@ class CMB2 extends CMB2_Base {
 		}
 		$this->generated_nonce = sanitize_html_class( 'nonce_' . basename( __FILE__ ) . $this->cmb_id );
 		return $this->generated_nonce;
+	}
+
+	/**
+	 * Whether this box is an "alternate context" box. This means the box has a 'context' property defined as:
+	 * 'form_top', 'before_permalink', 'after_title', or 'after_editor'.
+	 *
+	 * @since  2.2.4
+	 * @return bool
+	 */
+	public function is_alternate_context_box() {
+		return $this->prop( 'context' ) && in_array( $this->prop( 'context' ), array( 'form_top', 'before_permalink', 'after_title', 'after_editor' ) );
 	}
 
 	/**

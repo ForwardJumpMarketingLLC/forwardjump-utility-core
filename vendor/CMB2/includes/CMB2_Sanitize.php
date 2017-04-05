@@ -121,7 +121,7 @@ class CMB2_Sanitize {
 			CMB2_Utils::log_if_debug( __METHOD__, __LINE__, "{$this->field->type()} {$this->field->_id()} is missing the 'taxonomy' parameter." );
 		} else {
 
-			if ( 'options-page' !== $this->field->object_type ) {
+			if ( 'options-page' === $this->field->object_type ) {
 				$return_values = true;
 			} else {
 				wp_set_object_terms( $this->field->object_id, $this->value, $this->field->args( 'taxonomy' ) );
@@ -424,7 +424,12 @@ class CMB2_Sanitize {
 		// Check group $alldata data
 		$id_val  = isset( $alldata[ $base_id ][ $i ][ $id_key ] )
 			? absint( $alldata[ $base_id ][ $i ][ $id_key ] )
-			: 0;
+			: '';
+
+		// We don't want to save 0 to the DB for file fields.
+		if ( 0 === $id_val ) {
+			$id_val = '';
+		}
 
 		return array(
 			'value' => $this->text_url(),
