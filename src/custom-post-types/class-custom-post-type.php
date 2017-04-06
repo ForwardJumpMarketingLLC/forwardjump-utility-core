@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom Post Types Handler
+ * Custom Post Type Handler
  *
  * @package     ForwardJump\Utility
  * @since       0.1.1
@@ -12,13 +12,13 @@
 namespace ForwardJump\Utility\CustomPostTypes;
 
 /**
- * Class Custom_Post_Types
+ * Class Custom_Post_Type
  *
  * @since   0.1.1
  *
- * @package ForwardJump\Utility\CustomPostTypes
+ * @package ForwardJump\Utility\CustomPostType
  */
-class Custom_Post_Types {
+class Custom_Post_Type {
 
 	/**
 	 * CPT configuration array.
@@ -50,7 +50,7 @@ class Custom_Post_Types {
 	private $args = '';
 
 	/**
-	 * Custom_Post_Types constructor.
+	 * Custom_Post_Type constructor.
 	 *
 	 * @since 0.1.1
 	 *

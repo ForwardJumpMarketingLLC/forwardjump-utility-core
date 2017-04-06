@@ -10,6 +10,6 @@
  * PHP Version 5.4
  */
 
-namespace ForwardJump\Utility\CustomPostTypes;
+namespace ForwardJump\Utility\CustomPostType;
 
-include_once __DIR__ . '/class-custom-post-types.php';
+include_once __DIR__ . '/class-custom-post-type.php';

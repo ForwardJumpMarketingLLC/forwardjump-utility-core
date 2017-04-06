@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom Taxonomies Module
+ * Custom Taxonomy Module
  *
  * @package     ForwardJump\Utility
  * @since       0.1.2
@@ -9,6 +9,6 @@
  * @license     GNU General Public License 2.0+
  */
 
-namespace ForwardJump\Utility\CustomTaxonomies;
+namespace ForwardJump\Utility\CustomTaxonomy;
 
-include_once __DIR__ . '/class-custom-taxonomies.php';
+include_once __DIR__ . '/class-custom-taxonomy.php';

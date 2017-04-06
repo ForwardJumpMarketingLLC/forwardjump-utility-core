@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom Taxonomies Handler
+ * Custom Taxonomy Handler
  *
  * @package ForwardJump\Utility
  * @author  Tim Jensen <tim@timjensen.us>
@@ -12,12 +12,12 @@
 namespace ForwardJump\Utility\CustomTaxonomies;
 
 /**
- * Class Custom_Taxonomies
+ * Class Custom_Taxonomy
  *
- * @package ForwardJump\Utility\CustomTaxonomies
+ * @package ForwardJump\Utility\CustomTaxonomy
  * @since   0.1.2
  */
-class Custom_Taxonomies {
+class Custom_Taxonomy {
 
 	/**
 	 * Taxonomy configuration array.
@@ -56,7 +56,7 @@ class Custom_Taxonomies {
 	private $args = [];
 
 	/**
-	 * Custom_Taxonomies constructor.
+	 * Custom_Taxonomy constructor.
 	 *
 	 * @param array $config Configuration array for the taxonomy.
 	 *
