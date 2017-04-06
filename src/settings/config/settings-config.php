@@ -37,16 +37,16 @@ namespace ForwardJump\Utility\Settings;
 return [
 	[
 		'capability'         => 'manage_options',
-		'menu_page_type'     => 'submenu',
-		'menu_page_parent'   => 'genesis',
+		'menu_page_type'     => 'options',
+		'menu_page_parent'   => '',
 		'menu_page_priority' => 10,
-		'menu_page_icon'     => 'dashicons-admin-multisite',
+		'menu_page_icon'     => '',
 		'menu_slug'          => 'fj-options',
-		'menu_title'         => 'Extra Theme Settings',
-		'page_title'         => 'Extra Theme Settings',
+		'menu_title'         => 'FJ Utility Settings',
+		'page_title'         => 'ForwardJump Utility Settings',
 		'option_name'        => 'fj_options',
 		'option_group'       => 'fj_options_group',
-		'metabox_id'         => 'fj_genesis_settings',
+		'metabox_id'         => 'fj_settings',
 		'metabox_fields'     => [
 			[
 				'name'    => __( 'Gravity Forms honeypots', FJ_UTILITY_TEXT_DOMAIN ),
