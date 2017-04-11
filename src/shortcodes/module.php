@@ -23,14 +23,32 @@ if ( ! defined( 'FJ_UTILITY_SHORTCODES_DIR' ) ) {
 function autoload() {
 
 	$files = [
-		'post',
+		'class-add-shortcode',
 	];
 
 	foreach ( (array) $files as $file ) {
-		if ( file_exists( $filepath = FJ_UTILITY_SHORTCODES_DIR . $file . '.php' ) ) {
-			include $filepath;
+
+		$filepath = FJ_UTILITY_SHORTCODES_DIR . $file . '.php';
+
+		if ( file_exists( $filepath ) ) {
+			include_once $filepath;
 		}
 	}
 }
-
 autoload();
+
+add_action( 'init', __NAMESPACE__ . '\register_shortcodes' );
+/**
+ * Register shortcodes.
+ *
+ * @return void
+ */
+function register_shortcodes() {
+
+	$config = include FJ_UTILITY_SHORTCODES_DIR . 'config/shortcodes-config.php';
+	$config = apply_filters( 'fj_utility_core_shortcodes_config', $config );
+
+	foreach ( (array) $config as $shortcode_config ) {
+		new Add_Shortcode( $shortcode_config );
+	}
+}
