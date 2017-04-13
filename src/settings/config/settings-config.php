@@ -69,6 +69,13 @@ return [
 				'type'    => 'textarea_code',
 				'default' => false,
 			],
+			[
+				'name'    => __( 'Footer Scripts', FJ_UTILITY_TEXT_DOMAIN ),
+				'desc'    => __( 'Add scripts to be rendered in the page footer', FJ_UTILITY_TEXT_DOMAIN ),
+				'id'      => 'footer_scripts',
+				'type'    => 'textarea_code',
+				'default' => false,
+			],
 		],
 		'view_file'          => FJ_UTILITY_SETTINGS_DIR . 'views/admin-form.php',
 	],

@@ -26,6 +26,13 @@ function apply_enabled_options() {
 		} );
 	}
 
+	if ( isset( $fj_options['footer_scripts'] ) ) {
+
+		add_action( 'wp_footer', function () use ( $fj_options ) {
+			echo $fj_options['footer_scripts'];
+		} );
+	}
+
 	if ( isset( $fj_options['gf_honeypot'] ) && 'on' === $fj_options['gf_honeypot'] ) {
 
 		add_filter( 'gform_form_post_get_meta', 'ForwardJump\Utility\Functions\GravityForms\enforce_honeypots' );
