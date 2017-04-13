@@ -47,17 +47,22 @@ function get_all_custom_field_meta( $post_id, $config, $prefix = '' ) {
 
 		if ( isset( $field['layouts'] ) ) { // We're dealing with flexible content layouts.
 
-			// Get array position of the current layout type
+			// Get array position of the current layout type.
 			$layout_keys = array_flip( wp_list_pluck( $field['layouts'], 'name' ) );
 
 			foreach ( $field_value as $key => $layout_row ) {
 				$prefix     = $meta_key . "_{$key}_";
 				$new_config = $field['layouts'][ $layout_keys[ $layout_row ] ]['sub_fields'];
 
-				$results[] = array_merge( [ 'acf_fc_layout' => $layout_row ], get_all_custom_field_meta( $post_id, $new_config, $prefix ) );
+				$results[] = array_merge(
+					[
+						'acf_fc_layout' => $layout_row,
+					],
+					get_all_custom_field_meta( $post_id, $new_config, $prefix )
+				);
 			}
 
-			// reset
+			// reset.
 			$prefix = '';
 
 		} elseif ( isset( $field['sub_fields'] ) ) { // We're dealing with repeater fields.
@@ -68,13 +73,13 @@ function get_all_custom_field_meta( $post_id, $config, $prefix = '' ) {
 				$results[ $field['name'] ][] = get_all_custom_field_meta( $post_id, $new_config, $prefix );
 			}
 
-			// reset
+			// reset.
 			$prefix = '';
 
 		} else {
 			$results[ $field['name'] ] = $field_value;
 		}
-	}
+	} // End foreach().
 
 	return $results;
 }
@@ -124,30 +129,4 @@ function get_post_excerpt( $post_id, $word_length = 50, $ellipsis = '&hellip;', 
 	);
 
 	return $excerpt . apply_filters( 'get_post_excerpt_read_more_link', $more_link );
-}
-
-/**
- * Adds an additional metabox to the Archive Settings page for the specified post type.
- *
- * @param string   $post_type        Slug of the registered post type.
- * @param string   $title            Metabox title.
- * @param callable $metabox_callback Callback for filling the metabox.
- */
-function add_genesis_archive_settings_metabox( $post_type, $title, $metabox_callback ) {
-
-	static $count = 0;
-	$count++;
-
-	$args = [
-		'id' => "add_genesis_archive_settings_metabox_{$count}",
-		'title' => __( $title, FJ_UTILITY_TEXT_DOMAIN ),
-		'callback' => $metabox_callback,
-		'screen' => "{$post_type}_page_genesis-cpt-archive-new-post-type",
-		'context' => 'main',
-	];
-
-	add_action( 'genesis_cpt_archives_settings_metaboxes', function () use ( $args ) {
-
-		add_meta_box( $args['id'], $args['title'], $args['callback'], $args['screen'], $args['context'] );
-	} );
 }

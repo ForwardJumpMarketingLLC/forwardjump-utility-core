@@ -4,7 +4,7 @@
  * Plugin URI: https://bitbucket.org/forwardjump/forwardjump-utility-core
  * Description: The ForwardJump core functionality plugin.
  *
- * Version: 0.2.3
+ * Version: 0.2.4
  *
  * Author: Tim Jensen
  * Author URI: https://forwardjump.com/
@@ -55,6 +55,7 @@ function autoload() {
 		'functions/sandbox',
 		'custom-post-types/module',
 		'custom-taxonomies/module',
+		'genesis-admin-metaboxes/module',
 		'settings/module',
 		'shortcodes/module',
 	];
