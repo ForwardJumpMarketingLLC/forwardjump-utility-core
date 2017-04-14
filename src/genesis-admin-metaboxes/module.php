@@ -12,7 +12,7 @@
 namespace ForwardJump\Utility\GenesisAdminMetaboxes;
 
 if ( ! defined( 'FJ_UTILITY_GENESIS_DIR' ) ) {
-	define( 'FJ_UTILITY_GENESIS_DIR', plugin_dir_path( __FILE__ ) );
+	define( 'FJ_UTILITY_GENESIS_DIR', dirname( __FILE__ ) );
 }
 
 add_action( 'plugins_loaded', __NAMESPACE__ . '\init' );
@@ -29,13 +29,13 @@ function init() {
 		return;
 	}
 
-	include_once FJ_UTILITY_GENESIS_DIR . 'class-genesis-cpt-archive-metabox.php';
+	include_once FJ_UTILITY_GENESIS_DIR . '/class-genesis-cpt-archives-metabox.php';
 
-	include_once FJ_UTILITY_GENESIS_DIR . 'class-genesis-settings-metabox.php';
+	include_once FJ_UTILITY_GENESIS_DIR . '/class-genesis-settings-metabox.php';
 
 	do_genesis_settings_metaboxes();
 
-	do_genesis_cpt_archive_metaboxes();
+	do_genesis_cpt_archives_metaboxes();
 }
 
 /**
@@ -47,25 +47,33 @@ function init() {
  */
 function do_genesis_settings_metaboxes() {
 
-	$config = apply_filters( 'fj_utility_core_genesis_cpt_archive_config', null );
+	$config = apply_filters( 'fj_utility_core_genesis_settings_config', null );
+
+	if ( empty( $config ) ) {
+		return;
+	}
 
 	foreach ( (array) $config as $metabox ) {
-		new Genesis_CPT_Archive_Metabox( $metabox );
+		new Genesis_Settings_Metabox( $metabox );
 	}
 }
 
 /**
- * Instantiate the Genesis CPT Archive Metabox(es)
+ * Instantiate the Genesis CPT Archives Metabox(es)
  *
  * @since 0.2.4
  *
  * @return void
  */
-function do_genesis_cpt_archive_metaboxes() {
+function do_genesis_cpt_archives_metaboxes() {
 
-	$config = apply_filters( 'fj_utility_core_genesis_settings_config', null );
+	$config = apply_filters( 'fj_utility_core_genesis_cpt_archives_config', null );
+
+	if ( empty( $config ) ) {
+		return;
+	}
 
 	foreach ( (array) $config as $metabox ) {
-		new Genesis_Settings_Metabox( $metabox );
+		new Genesis_CPT_Archives_Metabox( $metabox );
 	}
 }

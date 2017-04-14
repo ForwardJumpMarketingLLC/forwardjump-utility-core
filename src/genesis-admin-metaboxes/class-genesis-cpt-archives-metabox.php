@@ -1,6 +1,6 @@
 <?php
 /**
- * Genesis CPT Archive Metabox class.
+ * Genesis CPT Archives Metabox class.
  *
  * @package ForwardJump\Utility\GenesisAdminMetaboxes
  * @since   0.2.4
@@ -12,7 +12,7 @@
 namespace ForwardJump\Utility\GenesisAdminMetaboxes;
 
 /**
- * CMB2 Genesis CPT Archive Metabox
+ * CMB2 Genesis CPT Archives Metabox
  *
  * To fetch these options, use `genesis_get_cpt_option()`, e.g.
  *    // In CPT archive template:
@@ -20,9 +20,9 @@ namespace ForwardJump\Utility\GenesisAdminMetaboxes;
  *        $color = genesis_get_cpt_option( 'test_colorpicker' );
  *    }
  *
- * @version 0.2.0
+ * @version 0.3.0
  */
-class Genesis_CPT_Archive_Metabox {
+class Genesis_CPT_Archives_Metabox {
 
 	/**
 	 * CPT slug
@@ -50,21 +50,21 @@ class Genesis_CPT_Archive_Metabox {
 	 *
 	 * @var string
 	 */
-	protected $metabox_id = 'genesis-cpt-archive-settings-metabox-%1$s';
+	protected $metabox_id = '';
 
 	/**
-	 * CPT slug
+	 * Admin hook
 	 *
 	 * @var string
 	 */
-	protected $admin_hook = '%1$s_page_genesis-cpt-archive-%1$s';
+	protected $admin_hook = '';
 
 	/**
 	 * Option key, and option page slug
 	 *
 	 * @var string
 	 */
-	protected $key = 'genesis-cpt-archive-settings-%1$s';
+	protected $key = '';
 
 	/**
 	 * Constructor
@@ -75,15 +75,26 @@ class Genesis_CPT_Archive_Metabox {
 	 */
 	public function __construct( array $config ) {
 
+		$this->set_properties( (array) $config );
+		$this->hooks();
+	}
+
+	/**
+	 * Set the class properties.
+	 *
+	 * @since 0.3.0
+	 *
+	 * @param array $config Metabox configuration array.
+	 */
+	protected function set_properties( array $config ) {
+
 		$this->post_type  = empty( $config['post_type'] ) ? null : $config['post_type'];
 		$this->metabox_title = empty( $config['metabox_title'] ) ? null : $config['metabox_title'];
 		$this->metabox_fields = empty( $config['metabox_fields'] ) ? null : (array) $config['metabox_fields'];
 
-		$this->admin_hook = sprintf( $this->admin_hook, $this->post_type );
-		$this->key        = sprintf( $this->key, $this->post_type );
-		$this->metabox_id = sprintf( $this->metabox_id, $this->post_type );
-
-		$this->hooks();
+		$this->metabox_id = sprintf( 'genesis-cpt-archive-settings-metabox-%1$s', $this->post_type );
+		$this->admin_hook = sprintf( '%1$s_page_genesis-cpt-archive-%1$s', $this->post_type );
+		$this->key        = sprintf( 'genesis-cpt-archive-settings-%1$s', $this->post_type );
 	}
 
 	/**
@@ -91,21 +102,9 @@ class Genesis_CPT_Archive_Metabox {
 	 *
 	 * @since 0.2.0
 	 */
-	public function hooks() {
-		add_action( 'init', array( $this, 'init' ) );
+	protected function hooks() {
 		add_action( 'admin_menu', array( $this, 'admin_hooks' ) );
 		add_action( 'cmb2_admin_init', array( $this, 'init_metabox' ) );
-	}
-
-
-	/**
-	 * Initiate admin hooks.
-	 *
-	 * @since 0.2.0
-	 */
-	public function init() {
-		// Add custom archive support for CPT.
-		add_post_type_support( $this->post_type, 'genesis-cpt-archives-settings' );
 	}
 
 	/**
