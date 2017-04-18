@@ -14,7 +14,7 @@ namespace ForwardJump\Utility\GenesisAdminMetaboxes;
 /**
  * Class Genesis_Settings_Metabox
  *
- * @version 0.1.0
+ * @version 0.1.1
  *
  * @package ForwardJump\Utility
  */
@@ -28,9 +28,9 @@ class Genesis_Settings_Metabox extends Genesis_CMB2_Admin_Metabox {
 	 * @param array $config Metabox configuration array.
 	 */
 	protected function set_properties( array $config ) {
-		$this->metabox_title  = empty( $config['metabox_title'] ) ? null : $config['metabox_title'];
-		$this->metabox_fields = empty( $config['metabox_fields'] ) ? null : (array) $config['metabox_fields'];
-		$this->metabox_id     = 'myprefix_genesis_settings';
+		parent::set_properties( $config );
+
+		$this->metabox_id     = 'fj_utility_genesis_settings';
 		$this->key            = 'genesis-settings';
 		$this->admin_hook     = 'toplevel_page_genesis';
 		$this->admin_page     = 'theme_settings';

@@ -14,7 +14,7 @@ namespace ForwardJump\Utility\GenesisAdminMetaboxes;
 /**
  * Class Genesis_CMB2_Admin_Metabox
  *
- * @version 0.1.0
+ * @version 0.1.1
  *
  * @package ForwardJump\Utility
  */
@@ -40,6 +40,13 @@ abstract class Genesis_CMB2_Admin_Metabox {
 	 * @var string
 	 */
 	protected $metabox_id = '';
+
+	/**
+	 * Metabox priority. Either 'high' or 'low'.
+	 *
+	 * @var string
+	 */
+	protected $metabox_priority = '';
 
 	/**
 	 * Option key, and option page slug
@@ -84,11 +91,14 @@ abstract class Genesis_CMB2_Admin_Metabox {
 	/**
 	 * Set the class properties.
 	 *
-	 * @since 0.1.0
+	 * @since 0.1.1
 	 *
 	 * @param array $config Metabox configuration array.
 	 */
 	protected function set_properties( array $config ) {
+		$this->metabox_title = empty( $config['metabox_title'] ) ? null : $config['metabox_title'];
+		$this->metabox_fields = empty( $config['metabox_fields'] ) ? null : (array) $config['metabox_fields'];
+		$this->metabox_priority = ( isset( $config['metabox_priority'] ) && 'low' === $config['metabox_priority'] ) ? 'low' : 'high';
 	}
 
 	/**
@@ -159,10 +169,10 @@ abstract class Genesis_CMB2_Admin_Metabox {
 		$cmb = cmb2_get_metabox( [
 			'id'           => $this->metabox_id . "-{$count}",
 			'title'        => __( $this->metabox_title, FJ_UTILITY_TEXT_DOMAIN ),
-			'hookup'       => false, // We'll handle ourselves. (add_sanitized_values())
-			'cmb_styles'   => false, // We'll handle ourselves. (admin_hooks())
+			'hookup'       => false, // Handled with $this->add_sanitized_values().
+			'cmb_styles'   => false, // Handled with $this->admin_hooks().
 			'context'      => 'main', // Important for Genesis.
-			// 'priority'     => 'low', // Defaults to 'high'.
+			'priority'     => $this->metabox_priority, // Defaults to 'high'.
 			'object_types' => [ $this->admin_hook ],
 			'show_on'      => [
 				// These are important, don't remove.

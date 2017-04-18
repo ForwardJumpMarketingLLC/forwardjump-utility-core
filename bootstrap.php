@@ -4,7 +4,7 @@
  * Plugin URI: https://bitbucket.org/forwardjump/forwardjump-utility-core
  * Description: The ForwardJump core functionality plugin.
  *
- * Version: 0.3.1
+ * Version: 0.3.2
  *
  * Author: Tim Jensen
  * Author URI: https://forwardjump.com/

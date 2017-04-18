@@ -14,7 +14,7 @@ namespace ForwardJump\Utility\GenesisAdminMetaboxes;
 /**
  * CMB2 Genesis CPT Archives Metabox
  *
- * @version 0.1.0
+ * @version 0.1.1
  */
 class Genesis_CPT_Archives_Metabox extends Genesis_CMB2_Admin_Metabox {
 
@@ -26,11 +26,11 @@ class Genesis_CPT_Archives_Metabox extends Genesis_CMB2_Admin_Metabox {
 	 * @param array $config Metabox configuration array.
 	 */
 	protected function set_properties( array $config ) {
-		$this->metabox_title = empty( $config['metabox_title'] ) ? null : $config['metabox_title'];
-		$this->metabox_fields = empty( $config['metabox_fields'] ) ? null : (array) $config['metabox_fields'];
+		parent::set_properties( $config );
+
 		$this->post_type  = empty( $config['post_type'] ) ? null : $config['post_type'];
-		$this->metabox_id = sprintf( 'genesis-cpt-archive-settings-metabox-%1$s', $this->post_type );
-		$this->key        = sprintf( 'genesis-cpt-archive-settings-%1$s', $this->post_type );
+		$this->metabox_id = sprintf( 'genesis-cpt-archive-settings-metabox-%s', $this->post_type );
+		$this->key        = sprintf( 'genesis-cpt-archive-settings-%s', $this->post_type );
 		$this->admin_hook = sprintf( '%1$s_page_genesis-cpt-archive-%1$s', $this->post_type );
 		$this->admin_page = 'cpt_archives_settings';
 	}
