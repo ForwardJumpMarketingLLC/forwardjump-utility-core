@@ -4,7 +4,7 @@
  * Plugin URI: https://bitbucket.org/forwardjump/forwardjump-utility-core
  * Description: The ForwardJump core functionality plugin.
  *
- * Version: 0.3.2
+ * Version: 0.4.0
  *
  * Author: Tim Jensen
  * Author URI: https://forwardjump.com/
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'FJ_UTILITY_TEXT_DOMAIN', 'forwardjump-utility' );
-define( 'FJ_UTILITY_DIR', plugin_dir_path( __FILE__ ) );
+define( 'FJ_UTILITY_DIR', __DIR__ );
 define( 'FJ_UTILITY_FILE', __FILE__ );
 
 /**
@@ -62,7 +62,7 @@ function autoload() {
 
 	foreach ( $files as $file ) {
 
-		$filepath = FJ_UTILITY_DIR . 'src/' . $file . '.php';
+		$filepath = FJ_UTILITY_DIR . '/src/' . $file . '.php';
 
 		if ( file_exists( $filepath ) ) {
 			include_once $filepath;
