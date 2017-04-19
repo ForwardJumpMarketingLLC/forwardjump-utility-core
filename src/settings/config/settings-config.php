@@ -77,6 +77,6 @@ return [
 				'default' => false,
 			],
 		],
-		'view_file'          => FJ_UTILITY_SETTINGS_DIR . 'views/admin-form.php',
+		'view_file'          => FJ_UTILITY_SETTINGS_DIR . '/views/admin-form.php',
 	],
 ];
