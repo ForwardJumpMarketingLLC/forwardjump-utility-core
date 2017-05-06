@@ -101,6 +101,8 @@ class Custom_Post_Type {
 	 */
 	protected function get_post_type_labels( $singular_label, $plural_label ) {
 
+		$menu_name = empty( $this->config['args']['labels']['menu_name'] ) ? $plural_label : $this->config['args']['labels']['menu_name'];
+
 		return [
 			'name'                  => _x( $plural_label, 'post type general name', FJ_UTILITY_TEXT_DOMAIN ),
 			'singular_name'         => _x( $singular_label, 'post type singular name', FJ_UTILITY_TEXT_DOMAIN ),
@@ -126,7 +128,7 @@ class Custom_Post_Type {
 			'filter_items_list'     => __( 'Filter ' . $plural_label . ' list', FJ_UTILITY_TEXT_DOMAIN ),
 			'items_list_navigation' => __( $plural_label . ' list navigation', FJ_UTILITY_TEXT_DOMAIN ),
 			'items_list'            => __( $plural_label . ' list', FJ_UTILITY_TEXT_DOMAIN ),
-			'menu_name'             => __( $plural_label, FJ_UTILITY_TEXT_DOMAIN ),
+			'menu_name'             => __( $menu_name, FJ_UTILITY_TEXT_DOMAIN ),
 			'name_admin_bar'        => _x( $singular_label, 'add new on admin bar', FJ_UTILITY_TEXT_DOMAIN ),
 		];
 	}

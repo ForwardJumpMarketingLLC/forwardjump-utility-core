@@ -18,6 +18,8 @@ namespace ForwardJump\Utility\PostMetaboxes;
  * 'metabox_title'  (string) => Title of the metabox.
  * 'metabox_fields' (array)  => The CMB2 fields that will display within the
  *                              metabox.
+ *
+ * @see https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress/wiki/Field-Types
  */
 return [
 	[
