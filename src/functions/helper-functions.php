@@ -147,7 +147,7 @@ add_action( 'admin_notices', function () {
 			<p>Search engines are discouraged. If this is a production site, make sure to change the search engine visibility under <a href="/wp-admin/options-reading.php">Reading Settings</a>.</p>
 		</div>
 		<?php
-	} elseif ( get_option( 'blog_public' ) && preg_match( '/(staging)/i', home_url() ) ) {
+	} elseif ( get_option( 'blog_public' ) && preg_match( '/(dev|staging|localhost)/i', home_url() ) ) {
 		?>
 		<div class="notice error">
 			<p>Search engines are encouraged. If this is a staging site, make sure to discourage search engine visibility under <a href="/wp-admin/options-reading.php">Reading Settings</a>.</p>
