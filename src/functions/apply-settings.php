@@ -43,3 +43,32 @@ function apply_enabled_options() {
 		add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
 	}
 }
+
+/**
+ * Show an error message to remind admins to make production sites public to search engines,
+ * and staging sites hidden from search engines.
+ *
+ * @since 0.4.2
+ *
+ * @return void
+ */
+add_action( 'admin_notices', function () {
+
+	$is_blog_public = get_option( 'blog_public' );
+	$is_dev_site = preg_match( '/(dev|staging|localhost)/i', home_url() );
+	$options_reading_url = get_admin_url( null, 'options-reading.php' );
+
+	if ( ! $is_blog_public && ! $is_dev_site ) {
+		?>
+		<div class="notice error">
+			<p>Search engines are discouraged. If this is a production site, make sure to change the search engine visibility under <a href="<?php echo esc_url( $options_reading_url ); ?>">Reading Settings</a>.</p>
+		</div>
+		<?php
+	} elseif ( $is_blog_public && $is_dev_site ) {
+		?>
+		<div class="notice error">
+			<p>Search engines are encouraged. If this is a staging site, make sure to discourage search engine visibility under <a href="<?php echo esc_url( $options_reading_url ); ?>">Reading Settings</a>.</p>
+		</div>
+		<?php
+	}
+} );
