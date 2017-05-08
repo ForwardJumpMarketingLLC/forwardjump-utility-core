@@ -14,7 +14,7 @@ namespace ForwardJump\Utility\GenesisAdminMetaboxes;
 /**
  * Class Genesis_CMB2_Admin_Metabox
  *
- * @version 0.1.1
+ * @version 0.1.2
  *
  * @package ForwardJump\Utility
  */
@@ -47,6 +47,20 @@ abstract class Genesis_CMB2_Admin_Metabox {
 	 * @var string
 	 */
 	protected $metabox_priority = '';
+
+	/**
+	 * Show field names.
+	 *
+	 * @var bool
+	 */
+	protected $metabox_show_names = true;
+
+	/**
+	 * Metabox classes.
+	 *
+	 * @var string
+	 */
+	protected $metabox_classes = '';
 
 	/**
 	 * Option key, and option page slug
@@ -96,9 +110,11 @@ abstract class Genesis_CMB2_Admin_Metabox {
 	 * @param array $config Metabox configuration array.
 	 */
 	protected function set_properties( array $config ) {
-		$this->metabox_title = empty( $config['metabox_title'] ) ? null : $config['metabox_title'];
-		$this->metabox_fields = empty( $config['metabox_fields'] ) ? null : (array) $config['metabox_fields'];
-		$this->metabox_priority = ( isset( $config['metabox_priority'] ) && 'low' === $config['metabox_priority'] ) ? 'low' : 'high';
+		$this->metabox_title      = empty( $config['metabox_title'] ) ? null : $config['metabox_title'];
+		$this->metabox_fields     = empty( $config['metabox_fields'] ) ? null : (array) $config['metabox_fields'];
+		$this->metabox_priority   = ( isset( $config['metabox_priority'] ) && 'low' === $config['metabox_priority'] ) ? 'low' : 'high';
+		$this->metabox_show_names = ( isset( $config['metabox_show_names'] ) && false === $config['metabox_show_names'] ) ? false : true;
+		$this->metabox_classes    = empty( $config['metabox_classes'] ) ? '' : $config['metabox_classes'];
 	}
 
 	/**
@@ -173,6 +189,8 @@ abstract class Genesis_CMB2_Admin_Metabox {
 			'cmb_styles'   => false, // Handled with $this->admin_hooks().
 			'context'      => 'main', // Important for Genesis.
 			'priority'     => $this->metabox_priority, // Defaults to 'high'.
+			'show_names'   => $this->metabox_show_names,
+			'classes'      => $this->metabox_classes,
 			'object_types' => [ $this->admin_hook ],
 			'show_on'      => [
 				// These are important, don't remove.
