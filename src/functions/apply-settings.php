@@ -35,17 +35,17 @@ function apply_enabled_options() {
 		} );
 	}
 
-	if ( filter_var( $fj_options['gf_honeypot'], FILTER_VALIDATE_BOOLEAN ) ) {
+	if ( isset( $fj_options['gf_honeypot'] ) && filter_var( $fj_options['gf_honeypot'], FILTER_VALIDATE_BOOLEAN ) ) {
 
 		add_filter( 'gform_form_post_get_meta', 'ForwardJump\Utility\Functions\GravityForms\enforce_honeypots' );
 	}
 
-	if ( filter_var( $fj_options['gf_hidden_labels'], FILTER_VALIDATE_BOOLEAN ) ) {
+	if ( isset( $fj_options['gf_hidden_labels'] ) && filter_var( $fj_options['gf_hidden_labels'], FILTER_VALIDATE_BOOLEAN ) ) {
 
 		add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
 	}
 
-	if ( filter_var( $fj_options['fj_allow_hide_on_404'], FILTER_VALIDATE_BOOLEAN ) ) {
+	if ( isset( $fj_options['fj_allow_hide_on_404'] ) && filter_var( $fj_options['fj_allow_hide_on_404'], FILTER_VALIDATE_BOOLEAN ) ) {
 
 		add_filter( 'wp_list_pages_excludes', __NAMESPACE__ . '\\exclude_pages_from_wp_list_pages' );
 		add_action( 'genesis_meta', __NAMESPACE__ . '\\add_noindex_meta_tags' );
