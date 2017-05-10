@@ -11,9 +11,14 @@
 
 namespace ForwardJump\Utility\Shortcodes;
 
+/**
+ * Shortcode configuration.
+ *
+ * @see https://codex.wordpress.org/Function_Reference/add_shortcode
+ */
 return [
 	[
-		'slug' => 'recent-posts',
+		'tag' => 'recent-posts',
 		'args' => [
 			'count'     => 1,
 			'post_type' => 'post',

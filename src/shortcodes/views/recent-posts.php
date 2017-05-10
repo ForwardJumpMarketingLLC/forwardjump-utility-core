@@ -1,5 +1,7 @@
 <?php
 /**
+ * Example shortcode view file.
+ *
  * @var $atts
  */
 $args = [
@@ -10,7 +12,5 @@ $args = [
 $recent_posts = new \WP_Query( $args );
 
 foreach ( $recent_posts->posts as $post ) {
-	var_dump( $post );
-	echo '////////////////END POST////////////////';
-
+	// Output HTML here.
 }

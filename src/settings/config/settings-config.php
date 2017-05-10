@@ -63,6 +63,13 @@ return [
 				'default' => false,
 			],
 			[
+				'name'    => __( 'Exclude pages from list', FJ_UTILITY_TEXT_DOMAIN ),
+				'desc'    => __( 'Add option to selectively remove pages from being listed on 404 pages.  Also adds a nofollow meta tag to hide the page from search engines.', FJ_UTILITY_TEXT_DOMAIN ),
+				'id'      => 'fj_allow_hide_on_404',
+				'type'    => 'checkbox',
+				'default' => false,
+			],
+			[
 				'name'    => __( 'Header Scripts', FJ_UTILITY_TEXT_DOMAIN ),
 				'desc'    => __( 'Add scripts to be rendered in the page header', FJ_UTILITY_TEXT_DOMAIN ),
 				'id'      => 'header_scripts',

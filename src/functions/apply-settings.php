@@ -11,7 +11,9 @@
 
 namespace ForwardJump\Utility\Functions\ApplySettings;
 
-add_action( 'plugins_loaded', __NAMESPACE__ . '\apply_enabled_options', 2 );
+use ForwardJump\Utility\PostMetaboxes\Post_Metabox;
+
+add_action( 'plugins_loaded', __NAMESPACE__ . '\apply_enabled_options', 12 );
 /**
  * Checks the plugin options and applies them as required.
  */
@@ -33,14 +35,24 @@ function apply_enabled_options() {
 		} );
 	}
 
-	if ( isset( $fj_options['gf_honeypot'] ) && 'on' === $fj_options['gf_honeypot'] ) {
+	if ( filter_var( $fj_options['gf_honeypot'], FILTER_VALIDATE_BOOLEAN ) ) {
 
 		add_filter( 'gform_form_post_get_meta', 'ForwardJump\Utility\Functions\GravityForms\enforce_honeypots' );
 	}
 
-	if ( isset( $fj_options['gf_hidden_labels'] ) && 'on' === $fj_options['gf_hidden_labels'] ) {
+	if ( filter_var( $fj_options['gf_hidden_labels'], FILTER_VALIDATE_BOOLEAN ) ) {
 
 		add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
+	}
+
+	if ( filter_var( $fj_options['fj_allow_hide_on_404'], FILTER_VALIDATE_BOOLEAN ) ) {
+
+		add_filter( 'wp_list_pages_excludes', __NAMESPACE__ . '\\exclude_pages_from_wp_list_pages' );
+		add_action( 'genesis_meta', __NAMESPACE__ . '\\add_noindex_meta_tags' );
+
+		if ( is_admin() ) {
+			new Post_Metabox( include FJ_UTILITY_DIR . '/src/post-metaboxes/config/exclude-from-wp-list-pages.php' );
+		}
 	}
 }
 
@@ -72,3 +84,50 @@ add_action( 'admin_notices', function () {
 		<?php
 	}
 } );
+
+/**
+ * Adds noindex meta tags to pages that have been designated to hide on 404 pages.
+ *
+ * @return void
+ */
+function add_noindex_meta_tags() {
+
+	if ( ! is_page() ) {
+		return;
+	}
+
+	$add_noindex = get_post_meta( get_the_ID(), 'fj_hide_on_404', true );
+
+	if ( ! filter_var( $add_noindex, FILTER_VALIDATE_BOOLEAN ) ) {
+		return;
+	}
+
+	add_action( 'wp_head', 'wp_no_robots', 1 );
+}
+
+/**
+ * Excludes selected pages from being listed using `wp_list_pages()`.
+ *
+ * @param array $exclude_array Page IDs to exclude from `wp_list_pages()`.
+ * @return array
+ */
+function exclude_pages_from_wp_list_pages( $exclude_array ) {
+
+	$exclude_pages = new \WP_Query( array(
+		'post_type'   => 'page',
+		'post_status' => 'publish',
+		'nopaging'    => true,
+		'meta_query'  => array(
+			array(
+				'key'     => 'fj_hide_on_404',
+				'value'   => array( 'on' ),
+				'compare' => 'IN',
+			),
+		),
+		'fields' => 'ids',
+	) );
+
+	wp_reset_postdata();
+
+	return array_merge( (array) $exclude_array, (array) $exclude_pages->posts );
+}

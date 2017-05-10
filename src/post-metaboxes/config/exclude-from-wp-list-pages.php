@@ -1,6 +1,6 @@
 <?php
 /**
- * Post metaboxes.
+ * Exclude from `wp_list_pages` metabox.
  *
  * @package ForwardJump\Utility\PostMetaboxes
  * @since   0.4.0
@@ -8,8 +8,6 @@
  * @link    https://forwardjump.com/
  * @license GNU General Public License 2.0+
  */
-
-namespace ForwardJump\Utility\PostMetaboxes;
 
 /**
  * This is an example config array.
@@ -22,22 +20,18 @@ namespace ForwardJump\Utility\PostMetaboxes;
  * @see https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress/wiki/Field-Types
  */
 return [
-	[
-		'object_types' => [ 'post' ],
-		'title'        => 'Example Metabox',
-		'fields'       => [
-			[
-				'name'    => __( 'Example field', FJ_UTILITY_TEXT_DOMAIN ),
-				'id'      => 'example_field',
-				'type'    => 'text',
-				'default' => false,
-			],
-			[
-				'name'    => __( 'Example field 2', FJ_UTILITY_TEXT_DOMAIN ),
-				'id'      => 'example_field_2',
-				'type'    => 'text',
-				'default' => false,
-			],
+	'object_types' => [ 'page' ],
+	'title'        => __( 'Additional Settings', FJ_UTILITY_CLIENT_TEXT_DOMAIN ),
+	'fields'       => [
+		[
+			'name' => __( 'Remove from 404 not found page list.', FJ_UTILITY_CLIENT_TEXT_DOMAIN ),
+			'desc' => esc_html__( 'Remove from 404 not found page list.', FJ_UTILITY_CLIENT_TEXT_DOMAIN ),
+			'id'   => 'fj_hide_on_404',
+			'type' => 'checkbox',
 		],
 	],
+	'context'      => 'side',
+	'priority'     => 'default',
+	'show_names'   => false,
+	'cmb_styles'   => false,
 ];
