@@ -1,0 +1,39 @@
+{
+    "name": "forwardjump/forwardjump-utility-core",
+    "description": "This plugin combines functionality we use on multiple sites.",
+    "keywords": [
+        "wordpress"
+    ],
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "Tim Jensen",
+            "homepage": "https://www.timjensen.us/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "webdevstudios/cmb2": "^2.2",
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "installer-paths": {
+            "vendor/CMB2/": [
+                "webdevstudios/cmb2"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "ForwardJump\\Utility\\CustomPostTypes\\": "src/"
+        },
+        "files": [
+            "vendor/CMB2/init.php",
+            "src/functions/apply-settings.php",
+            "src/functions/gravity-forms.php",
+            "src/functions/helper-functions.php"
+        ]
+    }
+}

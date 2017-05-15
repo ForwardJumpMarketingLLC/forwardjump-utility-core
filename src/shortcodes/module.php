@@ -15,27 +15,7 @@ if ( ! defined( 'FJ_UTILITY_SHORTCODES_DIR' ) ) {
 	define( 'FJ_UTILITY_SHORTCODES_DIR', plugin_dir_path( __FILE__ ) );
 }
 
-/**
- * Loads our plugin files.
- *
- * @since 0.1.0
- */
-function autoload() {
-
-	$files = [
-		'class-add-shortcode',
-	];
-
-	foreach ( (array) $files as $file ) {
-
-		$filepath = FJ_UTILITY_SHORTCODES_DIR . $file . '.php';
-
-		if ( file_exists( $filepath ) ) {
-			include_once $filepath;
-		}
-	}
-}
-autoload();
+include_once FJ_UTILITY_SHORTCODES_DIR . 'class-add-shortcode.php';
 
 add_action( 'init', __NAMESPACE__ . '\register_shortcodes' );
 /**

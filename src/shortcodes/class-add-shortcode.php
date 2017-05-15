@@ -40,11 +40,11 @@ class Add_Shortcode {
 	protected $view;
 
 	/**
-	 * Arguments for enqueuing the script.
+	 * Arguments for enqueuing the script. Each script must be in its own array.
 	 *
 	 * @var null
 	 */
-	protected $scripts;
+	protected $scripts = [];
 
 	/**
 	 * Add_Shortcode constructor.
@@ -79,7 +79,7 @@ class Add_Shortcode {
 	public function shortcode_callback( $atts ) {
 
 		if ( $this->scripts ) {
-			$this->enqueue_scripts( $this->scripts );
+			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 		}
 
 		$atts = shortcode_atts( $this->args, (array) $atts, $this->tag );
@@ -94,24 +94,21 @@ class Add_Shortcode {
 	/**
 	 * Enqueues the necessary scripts.
 	 *
-	 * @param array $scripts Arguments for enqueuing the script. Each script
-	 *                       must be in its own array.
 	 * @return void
 	 */
-	protected function enqueue_scripts( array $scripts ) {
+	public function enqueue_scripts() {
 
 		$defaults = [
 			'handle'    => null,
 			'src'       => null,
 			'deps'      => [ 'jquery' ],
 			'ver'       => false,
-			'in_footer' => true,
 		];
 
-		foreach ( (array) $scripts as $script ) {
+		foreach ( (array) $this->scripts as $script ) {
 			$args = array_merge( $defaults, (array) $script );
 
-			wp_enqueue_script( $args['handle'], $args['src'], $args['deps'], $args['ver'], $args['in_footer'] );
+			wp_enqueue_script( $args['handle'], $args['src'], $args['deps'], $args['ver'], true );
 		}
 	}
 }
