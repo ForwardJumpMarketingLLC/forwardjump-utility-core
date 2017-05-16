@@ -1,31 +1,40 @@
 <?php
 /**
- * Genesis Settings metaboxes.
+ * Genesis Theme Settings Meta Box configuration.
  *
- * @package ForwardJump\Utility\GenesisAdminMetaboxes
- * @since   0.2.4
+ * @package ForwardJump\Utility
+ * @since   1.0.0
  * @author  Tim Jensen
  * @link    https://forwardjump.com/
  * @license GNU General Public License 2.0+
  */
 
-namespace ForwardJump\Utility\GenesisAdminMetaboxes;
-
 /**
  * This is an example config array.
  *
- * 'metabox_title'  (string) => Title of the metabox.
- * 'metabox_fields' (array)  => The CMB2 fields that will display within the metabox.
+ * 'metabox' (array) => Configuration array to pass to `CMB2()`.
+ * 'fields'  (array) => Configuration arrays to pass to
+ *                      `CMB2->add_field()`.
+ *
+ * @see https://github.com/CMB2/CMB2/blob/master/example-functions.php
+ *
+ * @return array
  */
 return [
 	[
-		'metabox_title'  => 'Example Metabox',
-		'metabox_fields' => [
+		'metabox' => [
+			'title'        => 'Example Genesis Theme Settings CMB2 meta box', // String. Translation function is handled by the class.
+			'priority'     => 'high', // 'high' or 'low'.
+			'show_names'   => true, // Bool.
+			'cmb2_styles'  => true, // Bool.
+			'closed'       => false, // Bool.
+			'classes'      => 'extra-classes',
+		],
+		'fields'  => [
 			[
-				'name'    => __( 'Example field', FJ_UTILITY_TEXT_DOMAIN ),
-				'id'      => 'example_field',
+				'name'    => 'Example field',
+				'id'      => 'example_cmb2_field',
 				'type'    => 'text',
-				'default' => false,
 			],
 		],
 	],
