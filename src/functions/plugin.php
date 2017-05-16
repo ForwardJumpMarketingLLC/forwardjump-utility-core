@@ -21,7 +21,7 @@ register_activation_hook( FJ_UTILITY_FILE, __NAMESPACE__ . '\activate_the_plugin
  * @return void
  */
 function activate_the_plugin() {
-    flush_rewrite_rules();
+	flush_rewrite_rules();
 }
 
 register_deactivation_hook( FJ_UTILITY_FILE, __NAMESPACE__ . '\deactivate_plugin' );
@@ -33,7 +33,7 @@ register_deactivation_hook( FJ_UTILITY_FILE, __NAMESPACE__ . '\deactivate_plugin
  * @return void
  */
 function deactivate_plugin() {
-    delete_option( 'rewrite_rules' );
+	delete_option( 'rewrite_rules' );
 }
 
 register_uninstall_hook( FJ_UTILITY_FILE, __NAMESPACE__ . '\uninstall_plugin' );
@@ -45,5 +45,5 @@ register_uninstall_hook( FJ_UTILITY_FILE, __NAMESPACE__ . '\uninstall_plugin' );
  * @return void
  */
 function uninstall_plugin() {
-    delete_option( 'rewrite_rules' );
+	delete_option( 'rewrite_rules' );
 }

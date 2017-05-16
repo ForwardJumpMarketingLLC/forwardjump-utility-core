@@ -21,8 +21,10 @@
  */
 return [
 	[
-		'object_types' => [ 'post' ],
-		'title'        => 'Example Metabox',
+		'metabox' => [
+			'object_types' => [ 'post' ],
+			'title'        => 'Example Metabox',
+		],
 		'fields'       => [
 			[
 				'name'    => 'Example field',

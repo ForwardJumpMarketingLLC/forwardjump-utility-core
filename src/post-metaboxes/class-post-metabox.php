@@ -25,14 +25,14 @@ class Post_Metabox {
 	 *
 	 * @var array
 	 */
-	protected $metabox_args = [];
+	protected $metabox_config = [];
 
 	/**
 	 * Metabox fields.
 	 *
 	 * @var array
 	 */
-	protected $fields = [];
+	protected $fields_config = [];
 
 	/**
 	 * Constructor.
@@ -42,26 +42,8 @@ class Post_Metabox {
 	 * @param array $config Metabox configuration array.
 	 */
 	public function __construct( array $config ) {
-		$this->set_properties( (array) $config );
-	}
-
-	/**
-	 * Set the class properties.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @param array $config Metabox configuration array.
-	 */
-	protected function set_properties( array $config ) {
-
-		foreach ( $config as $property => $value ) {
-
-			if ( 'fields' === $property ) {
-				$this->{$property} = (array) $value;
-			} else {
-				$this->metabox_args[ $property ] = $value;
-			}
-		}
+		$this->metabox_config = (array) $config['metabox'];
+		$this->fields_config  = (array) $config['fields'];
 	}
 
 	/**
@@ -85,13 +67,13 @@ class Post_Metabox {
 		static $count = 0;
 		$count ++;
 
-		if ( empty( $this->metabox_args['id'] ) ) {
-			$this->metabox_args['id'] = "fj_utility_metabox-{$count}";
+		if ( empty( $this->metabox_config['id'] ) ) {
+			$this->metabox_config['id'] = "fj_utility_metabox-{$count}";
 		}
 
-		$cmb = new_cmb2_box( (array) $this->metabox_args );
+		$cmb = new_cmb2_box( (array) $this->metabox_config );
 
-		foreach ( (array) $this->fields as $field_args ) {
+		foreach ( (array) $this->fields_config as $field_args ) {
 
 			$field_args['name'] = __( $field_args['name'], FJ_UTILITY_TEXT_DOMAIN );
 

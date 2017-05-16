@@ -20,8 +20,14 @@
  * @see https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress/wiki/Field-Types
  */
 return [
-	'object_types' => [ 'page' ],
-	'title'        => 'Additional Settings',
+	'metabox' => [
+		'object_types' => [ 'page' ],
+		'title'        => 'Additional Settings',
+		'context'      => 'side',
+		'priority'     => 'default',
+		'show_names'   => false,
+		'cmb_styles'   => false,
+	],
 	'fields'       => [
 		[
 			'name' => 'Remove from 404 not found page list.',
@@ -30,8 +36,4 @@ return [
 			'type' => 'checkbox',
 		],
 	],
-	'context'      => 'side',
-	'priority'     => 'default',
-	'show_names'   => false,
-	'cmb_styles'   => false,
 ];
