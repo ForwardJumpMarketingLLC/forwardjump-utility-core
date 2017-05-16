@@ -57,8 +57,6 @@ class Add_Shortcode {
 		$this->args    = empty( $config['args'] ) ? null : $config['args'];
 		$this->view    = empty( $config['view'] ) ? null : $config['view'];
 		$this->scripts = empty( $config['scripts'] ) ? null : $config['scripts'];
-
-		$this->add_shortcode();
 	}
 
 	/**
@@ -66,7 +64,7 @@ class Add_Shortcode {
 	 *
 	 * @return void
 	 */
-	protected function add_shortcode() {
+	public function init() {
 		add_shortcode( $this->tag, [ $this, 'shortcode_callback' ] );
 	}
 

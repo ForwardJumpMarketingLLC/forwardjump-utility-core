@@ -12,7 +12,7 @@
 namespace ForwardJump\Utility\Shortcodes;
 
 if ( ! defined( 'FJ_UTILITY_SHORTCODES_DIR' ) ) {
-	define( 'FJ_UTILITY_SHORTCODES_DIR', plugin_dir_path( __FILE__ ) );
+	define( 'FJ_UTILITY_SHORTCODES_DIR', __DIR__ . '/' );
 }
 
 include_once FJ_UTILITY_SHORTCODES_DIR . 'class-add-shortcode.php';
@@ -29,6 +29,6 @@ function register_shortcodes() {
 	$config = apply_filters( 'fj_utility_core_shortcodes_config', $config );
 
 	foreach ( (array) $config as $shortcode_config ) {
-		new Add_Shortcode( $shortcode_config );
+		( new Add_Shortcode( $shortcode_config ) )->init();
 	}
 }
