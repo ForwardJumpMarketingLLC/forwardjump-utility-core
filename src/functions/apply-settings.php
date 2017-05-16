@@ -16,6 +16,8 @@ use ForwardJump\Utility\PostMetaboxes\Post_Metabox;
 add_action( 'plugins_loaded', __NAMESPACE__ . '\apply_enabled_options', 12 );
 /**
  * Checks the plugin options and applies them as required.
+ *
+ * @return void
  */
 function apply_enabled_options() {
 
@@ -51,7 +53,10 @@ function apply_enabled_options() {
 		add_action( 'genesis_meta', __NAMESPACE__ . '\\add_noindex_meta_tags' );
 
 		if ( is_admin() ) {
-			new Post_Metabox( include FJ_UTILITY_DIR . 'src/post-metaboxes/config/exclude-from-wp-list-pages.php' );
+			$config = include FJ_UTILITY_DIR . 'src/post-metaboxes/config/exclude-from-wp-list-pages.php';
+			$config = apply_filters( 'fj_utility_core_exclude_from_list_pages', $config );
+
+			( new Post_Metabox( $config ) )->init();
 		}
 	}
 }
