@@ -69,7 +69,7 @@ class Post_Metabox {
 	 *
 	 * @since 0.1.0
 	 */
-	protected function init() {
+	public function init() {
 		add_action( 'cmb2_admin_init', [ $this, 'init_metabox' ] );
 	}
 
