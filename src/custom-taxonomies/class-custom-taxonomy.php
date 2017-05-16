@@ -67,7 +67,6 @@ class Custom_Taxonomy {
 		$this->taxonomy    = empty( $this->config['taxonomy'] ) ? false : $this->config['taxonomy'];
 		$this->object_type = empty( $this->config['object_type'] ) ? false : $this->config['object_type'];
 		$this->args        = empty( $this->config['args'] ) ? null : (array) $this->config['args'];
-		$this->init();
 	}
 
 	/**
@@ -77,7 +76,7 @@ class Custom_Taxonomy {
 	 *
 	 * @return void
 	 */
-	protected function init() {
+	public function init() {
 		add_action( 'init', [ $this, 'register_custom_taxonomy' ] );
 	}
 

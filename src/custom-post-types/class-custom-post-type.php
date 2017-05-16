@@ -60,7 +60,6 @@ class Custom_Post_Type {
 		$this->config    = $config;
 		$this->post_type = empty( $this->config['post_type'] ) ? false : $this->config['post_type'];
 		$this->args      = empty( $this->config['args'] ) ? null : (array) $this->config['args'];
-		$this->init();
 	}
 
 	/**
@@ -68,7 +67,7 @@ class Custom_Post_Type {
 	 *
 	 * @since 0.1.1
 	 */
-	protected function init() {
+	public function init() {
 		add_action( 'init', [ $this, 'register_custom_post_type' ] );
 	}
 
