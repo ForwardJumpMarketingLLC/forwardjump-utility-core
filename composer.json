@@ -41,7 +41,9 @@
             "src/functions/apply-settings.php",
             "src/functions/gravity-forms.php",
             "src/functions/helper-functions.php",
-            "src/functions/plugin.php"
+            "src/functions/plugin.php",
+            "src/settings/module.php",
+            "src/shortcodes/module.php"
         ]
     }
 }

@@ -11,4 +11,6 @@ return array(
     '90b23edb1086ecb674690b3923c903d3' => $baseDir . '/src/functions/gravity-forms.php',
     '54fee958f28caab4d626af9160abe482' => $baseDir . '/src/functions/helper-functions.php',
     '5232377bcbc8fcba1a3d576c569415ed' => $baseDir . '/src/functions/plugin.php',
+    '59829d59bb12e766cfbe9e4b8c23650d' => $baseDir . '/src/settings/module.php',
+    '7292dafdb6328bffaaec4aee1c978879' => $baseDir . '/src/shortcodes/module.php',
 );

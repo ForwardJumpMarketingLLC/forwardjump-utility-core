@@ -12,6 +12,8 @@ class ComposerStaticInitce7509a2bcae3233826701e544bcbdad
         '90b23edb1086ecb674690b3923c903d3' => __DIR__ . '/../..' . '/src/functions/gravity-forms.php',
         '54fee958f28caab4d626af9160abe482' => __DIR__ . '/../..' . '/src/functions/helper-functions.php',
         '5232377bcbc8fcba1a3d576c569415ed' => __DIR__ . '/../..' . '/src/functions/plugin.php',
+        '59829d59bb12e766cfbe9e4b8c23650d' => __DIR__ . '/../..' . '/src/settings/module.php',
+        '7292dafdb6328bffaaec4aee1c978879' => __DIR__ . '/../..' . '/src/shortcodes/module.php',
     );
 
     public static $classMap = array (
