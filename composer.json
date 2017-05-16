@@ -26,16 +26,9 @@
         }
     },
     "autoload": {
-        "classmap": [
-            "src/custom-post-types/class-custom-post-type.php",
-            "src/custom-taxonomies/class-custom-taxonomy.php",
-            "src/genesis-admin-metaboxes/class-genesis-cmb2-admin-meta-box.php",
-            "src/genesis-admin-metaboxes/class-genesis-cpt-archive-settings-meta-box.php",
-            "src/genesis-admin-metaboxes/class-genesis-theme-settings-meta-box.php",
-            "src/post-metaboxes/class-post-metabox.php",
-            "src/settings/class-settings.php",
-            "src/shortcodes/class-add-shortcode.php"
-        ],
+        "psr-4": {
+            "ForwardJump\\Utility\\": "src/"
+        },
         "files": [
             "vendor/CMB2/init.php",
             "src/functions/apply-settings.php",
