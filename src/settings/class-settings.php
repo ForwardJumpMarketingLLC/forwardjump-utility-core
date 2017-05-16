@@ -220,6 +220,9 @@ class Settings_Page {
 		] );
 
 		foreach ( $this->metabox_fields as $field ) {
+			$field['name'] = __( $field['name'], FJ_UTILITY_TEXT_DOMAIN );
+			$field['desc'] = __( $field['desc'], FJ_UTILITY_TEXT_DOMAIN );
+
 			$cmb->add_field( $field );
 		}
 	}
