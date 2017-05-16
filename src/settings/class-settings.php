@@ -23,14 +23,14 @@ class Settings_Page {
 	 *
 	 * @var string
 	 */
-	private $capability = '';
+	private $capability = 'manage_options';
 
 	/**
 	 * Menu page type.
 	 *
 	 * @var string
 	 */
-	private $menu_page_type = '';
+	private $menu_page_type = 'menu';
 
 	/**
 	 * Menu page parent.
@@ -44,7 +44,7 @@ class Settings_Page {
 	 *
 	 * @var int
 	 */
-	private $menu_page_priority = '';
+	private $menu_page_priority = 10;
 
 	/**
 	 * Menu icon.
@@ -103,18 +103,11 @@ class Settings_Page {
 	private $metabox_fields = [];
 
 	/**
-	 * Configuration file.
-	 *
-	 * @var array
-	 */
-	private $config = [];
-
-	/**
-	 * View file.
+	 * Options page view file.
 	 *
 	 * @var string
 	 */
-	private $view_file = '';
+	private $view_file = FJ_UTILITY_SETTINGS_DIR . '/views/admin-form.php';
 
 	/**
 	 * Constructor
@@ -124,140 +117,29 @@ class Settings_Page {
 	 * @param array $config Configuration array for the settings page.
 	 */
 	public function __construct( $config ) {
-		$this->config = (array) $config;
-
-		$this->set_capability();
-		$this->set_menu_page_type();
-		$this->set_menu_page_parent();
-		$this->set_menu_page_priority();
-		$this->set_menu_page_icon();
-		$this->set_menu_slug();
-		$this->set_menu_title();
-		$this->set_page_title();
-		$this->set_option_name();
-		$this->set_option_group();
-		$this->set_metabox_id();
-		$this->set_metabox_fields();
-		$this->set_view_file();
-
-		$this->init();
+		$this->set_properties( (array) $config );
 	}
 
 	/**
-	 * Sets the capability required for this menu to be displayed to the user..
+	 * Sets the class properties.
 	 *
-	 * @since 0.1.0
+	 * @since 0.5.0
+	 *
+	 * @param array $config Configuration array for the settings page.
+	 * @return void
 	 */
-	protected function set_capability() {
-		$this->capability = ! empty( $this->config['capability'] ) ? $this->config['capability'] : 'manage_options';
-	}
+	protected function set_properties( array $config ) {
 
-	/**
-	 * Sets the menu page type.  Either 'options', 'menu', or 'submenu'.
-	 *
-	 * @since 0.1.0
-	 */
-	protected function set_menu_page_type() {
-		$this->menu_page_type = ! empty( $this->config['menu_page_type'] ) ? $this->config['menu_page_type'] : 'menu';
-	}
+		foreach ( $config as $property => $value ) {
 
-	/**
-	 * Sets the menu page parent.
-	 *
-	 * @since 0.1.0
-	 */
-	protected function set_menu_page_parent() {
-		$this->menu_page_parent = ! empty( $this->config['menu_page_parent'] ) ? $this->config['menu_page_parent'] : null;
-	}
+			if ( isset( $this->{$property} ) ) {
+				$this->{$property} = $value;
+			}
+		}
 
-	/**
-	 * Sets the menu page priority.
-	 *
-	 * @since 0.1.0
-	 */
-	protected function set_menu_page_priority() {
-		$this->menu_page_priority = ! empty( $this->config['menu_page_priority'] ) ? $this->config['menu_page_priority'] : 10;
-	}
-
-	/**
-	 * Sets the menu page icon.
-	 *
-	 * @since 0.1.0
-	 */
-	protected function set_menu_page_icon() {
-		$this->menu_page_icon = ! empty( $this->config['menu_page_icon'] ) ? $this->config['menu_page_icon'] : null;
-	}
-
-	/**
-	 * Sets the menu slug.
-	 *
-	 * @since 0.1.0
-	 */
-	protected function set_menu_slug() {
-		$this->menu_slug = ! empty( $this->config['menu_slug'] ) ? $this->config['menu_slug'] : null;
-	}
-
-	/**
-	 * Sets the menu title.
-	 *
-	 * @since 0.1.0
-	 */
-	protected function set_menu_title() {
-		$this->menu_title = ! empty( $this->config['menu_title'] ) ? $this->config['menu_title'] : null;
-	}
-
-	/**
-	 * Sets the Options Page title.
-	 *
-	 * @since 0.1.0
-	 */
-	protected function set_page_title() {
-		$this->page_title = ! empty( $this->config['page_title'] ) ? $this->config['page_title'] : null;
-	}
-
-	/**
-	 * Sets the option name.
-	 *
-	 * @since 0.1.0
-	 */
-	protected function set_option_name() {
-		$this->option_name = ! empty( $this->config['option_name'] ) ? $this->config['option_name'] : null;
-	}
-
-	/**
-	 * Sets the option group.
-	 *
-	 * @since 0.1.0
-	 */
-	protected function set_option_group() {
-		$this->option_group = ! empty( $this->config['option_group'] ) ? $this->config['option_group'] : $this->option_name;
-	}
-
-	/**
-	 * Sets the metabox ID.
-	 *
-	 * @since 0.1.0
-	 */
-	protected function set_metabox_id() {
-		$this->metabox_id = ! empty( $this->config['metabox_id'] ) ? $this->config['metabox_id'] : null;
-	}
-
-	/**
-	 * Sets the metabox fields.
-	 *
-	 * @since 0.1.0
-	 */
-	protected function set_metabox_fields() {
-		$this->metabox_fields = ! empty( $this->config['metabox_fields'] ) ? $this->config['metabox_fields'] : [];
-	}
-
-	/**
-	 * Sets the view file.
-	 *
-	 * @since 0.1.0
-	 */
-	protected function set_view_file() {
-		$this->view_file = ! empty( $this->config['view_file'] ) ? $this->config['view_file'] : null;
+		if ( empty( $this->option_group ) ) {
+			$this->option_group = $this->option_name;
+		}
 	}
 
 	/**
@@ -290,7 +172,7 @@ class Settings_Page {
 
 		$menu_page_args = [
 			__( $this->page_title, FJ_UTILITY_TEXT_DOMAIN ),
-			__( $this->menu_title ),
+			__( $this->menu_title, FJ_UTILITY_TEXT_DOMAIN ),
 			$this->capability,
 			$this->menu_slug,
 			[ $this, 'admin_page_display' ],
@@ -327,15 +209,15 @@ class Settings_Page {
 			return;
 		}
 
-		$cmb = new_cmb2_box( array(
+		$cmb = new_cmb2_box( [
 			'id'         => $this->metabox_id,
 			'hookup'     => false,
 			'cmb_styles' => true,
-			'show_on'    => array(
+			'show_on'    => [
 				'key'   => 'options-page',
-				'value' => array( $this->option_name ),
-			),
-		) );
+				'value' => [ $this->option_name ],
+			],
+		] );
 
 		foreach ( $this->metabox_fields as $field ) {
 			$cmb->add_field( $field );

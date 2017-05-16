@@ -27,13 +27,10 @@ function init() {
 		return;
 	}
 
-	include FJ_UTILITY_SETTINGS_DIR . '/class-settings.php';
-
 	$config = include FJ_UTILITY_SETTINGS_DIR . '/config/settings-config.php';
-
 	$config = apply_filters( 'fj_utility_core_settings_config', $config );
 
 	foreach ( (array) $config as $setting ) {
-		new Settings_Page( $setting );
+		( new Settings_Page( $setting ) )->init();
 	}
 }
