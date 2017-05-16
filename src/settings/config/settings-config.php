@@ -84,5 +84,6 @@ return [
 				'default' => false,
 			],
 		],
+		'view'               => FJ_UTILITY_SETTINGS_DIR . '/views/admin-form.php',
 	],
 ];

@@ -107,7 +107,7 @@ class Settings_Page {
 	 *
 	 * @var string
 	 */
-	private $view_file = FJ_UTILITY_SETTINGS_DIR . '/views/admin-form.php';
+	private $view = '';
 
 	/**
 	 * Constructor
@@ -195,7 +195,7 @@ class Settings_Page {
 	 * @since  0.1.0
 	 */
 	public function admin_page_display() {
-		include $this->view_file;
+		include $this->view;
 	}
 
 	/**
