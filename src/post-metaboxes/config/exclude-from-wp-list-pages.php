@@ -21,11 +21,11 @@
  */
 return [
 	'object_types' => [ 'page' ],
-	'title'        => __( 'Additional Settings', FJ_UTILITY_CLIENT_TEXT_DOMAIN ),
+	'title'        => 'Additional Settings',
 	'fields'       => [
 		[
-			'name' => __( 'Remove from 404 not found page list.', FJ_UTILITY_CLIENT_TEXT_DOMAIN ),
-			'desc' => esc_html__( 'Remove from 404 not found page list.', FJ_UTILITY_CLIENT_TEXT_DOMAIN ),
+			'name' => 'Remove from 404 not found page list.',
+			'desc' => 'Remove from 404 not found page list.',
 			'id'   => 'fj_hide_on_404',
 			'type' => 'checkbox',
 		],

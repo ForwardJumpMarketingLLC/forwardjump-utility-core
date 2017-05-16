@@ -25,13 +25,13 @@ return [
 		'title'        => 'Example Metabox',
 		'fields'       => [
 			[
-				'name'    => __( 'Example field', FJ_UTILITY_TEXT_DOMAIN ),
+				'name'    => 'Example field',
 				'id'      => 'example_field',
 				'type'    => 'text',
 				'default' => false,
 			],
 			[
-				'name'    => __( 'Example field 2', FJ_UTILITY_TEXT_DOMAIN ),
+				'name'    => 'Example field 2',
 				'id'      => 'example_field_2',
 				'type'    => 'text',
 				'default' => false,
