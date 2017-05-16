@@ -12,7 +12,7 @@
 namespace ForwardJump\Utility\Settings;
 
 if ( ! defined( 'FJ_UTILITY_SETTINGS_DIR' ) ) {
-	define( 'FJ_UTILITY_SETTINGS_DIR', __DIR__ );
+	define( 'FJ_UTILITY_SETTINGS_DIR', __DIR__ . '/' );
 }
 
 add_action( 'plugins_loaded', __NAMESPACE__ . '\init' );
@@ -27,7 +27,7 @@ function init() {
 		return;
 	}
 
-	$config = include FJ_UTILITY_SETTINGS_DIR . '/config/settings-config.php';
+	$config = include FJ_UTILITY_SETTINGS_DIR . 'config/settings-config.php';
 	$config = apply_filters( 'fj_utility_core_settings_config', $config );
 
 	foreach ( (array) $config as $setting ) {

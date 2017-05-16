@@ -51,7 +51,7 @@ function apply_enabled_options() {
 		add_action( 'genesis_meta', __NAMESPACE__ . '\\add_noindex_meta_tags' );
 
 		if ( is_admin() ) {
-			new Post_Metabox( include FJ_UTILITY_DIR . '/src/post-metaboxes/config/exclude-from-wp-list-pages.php' );
+			new Post_Metabox( include FJ_UTILITY_DIR . 'src/post-metaboxes/config/exclude-from-wp-list-pages.php' );
 		}
 	}
 }
