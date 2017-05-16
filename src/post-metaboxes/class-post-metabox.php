@@ -21,7 +21,7 @@ namespace ForwardJump\Utility\PostMetaboxes;
 class Post_Metabox {
 
 	/**
-	 * Metabox args
+	 * Metabox args.
 	 *
 	 * @var array
 	 */
@@ -35,7 +35,7 @@ class Post_Metabox {
 	protected $fields = [];
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 *
 	 * @since 0.1.0
 	 *
@@ -43,7 +43,6 @@ class Post_Metabox {
 	 */
 	public function __construct( array $config ) {
 		$this->set_properties( (array) $config );
-		$this->init();
 	}
 
 	/**
@@ -93,6 +92,9 @@ class Post_Metabox {
 		$cmb = new_cmb2_box( (array) $this->metabox_args );
 
 		foreach ( (array) $this->fields as $field_args ) {
+
+			$field_args['name'] = __( $field_args['name'], FJ_UTILITY_TEXT_DOMAIN );
+
 			// Set our CMB2 fields.
 			$cmb->add_field( $field_args );
 		}
