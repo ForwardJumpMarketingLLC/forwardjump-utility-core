@@ -76,9 +76,7 @@ class Add_Shortcode {
 	 */
 	public function shortcode_callback( $atts ) {
 
-		if ( $this->scripts ) {
-			add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-		}
+		$this->enqueue_scripts();
 
 		$atts = shortcode_atts( $this->args, (array) $atts, $this->tag );
 
@@ -96,6 +94,10 @@ class Add_Shortcode {
 	 */
 	public function enqueue_scripts() {
 
+		if ( empty( $this->scripts ) ) {
+			return;
+		}
+
 		$defaults = [
 			'handle'    => null,
 			'src'       => null,
@@ -105,6 +107,11 @@ class Add_Shortcode {
 
 		foreach ( (array) $this->scripts as $script ) {
 			$args = array_merge( $defaults, (array) $script );
+
+			// Check if this script is already enqueued.
+			if ( wp_script_is( $args['handle'] ) ) {
+				continue;
+			}
 
 			wp_enqueue_script( $args['handle'], $args['src'], $args['deps'], $args['ver'], true );
 		}
