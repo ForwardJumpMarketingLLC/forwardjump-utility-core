@@ -78,7 +78,7 @@ class Add_Shortcode {
 
 		$this->enqueue_scripts();
 
-		$atts = shortcode_atts( $this->args, (array) $atts, $this->tag );
+		$atts = shortcode_atts( (array) $this->args, (array) $atts, $this->tag );
 
 		ob_start();
 
