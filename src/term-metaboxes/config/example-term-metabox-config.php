@@ -1,9 +1,9 @@
 <?php
 /**
- * Post metaboxes.
+ * Term metaboxes.
  *
- * @package ForwardJump\Utility\PostMetaboxes
- * @since   0.4.0
+ * @package ForwardJump\Utility\TermMetaboxes
+ * @since   1.1.0
  * @author  Tim Jensen
  * @link    https://forwardjump.com/
  * @license GNU General Public License 2.0+
@@ -20,21 +20,16 @@
 return [
 	[
 		'metabox' => [
-			'object_types' => [ 'post' ],
-			'title'        => 'Example Metabox',
+			'taxonomies' => [ 'category' ],
+			'title'      => 'Featured Image',
+			'show_names' => false,
 		],
-		'fields'       => [
+		'fields'  => [
 			[
-				'name'    => 'Example field',
-				'id'      => 'example_field',
-				'type'    => 'text',
-				'default' => false,
-			],
-			[
-				'name'    => 'Example field 2',
-				'id'      => 'example_field_2',
-				'type'    => 'text',
-				'default' => false,
+				'name'  => 'Featured Image',
+				'id'    => 'featured_image',
+				'type'  => 'file',
+				'allow' => array( 'attachment' ),
 			],
 		],
 	],
