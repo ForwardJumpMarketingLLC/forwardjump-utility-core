@@ -12,10 +12,8 @@
 /**
  * This is an example config array.
  *
- * 'post_type'      (string) => Post type slug.
- * 'metabox_title'  (string) => Title of the metabox.
- * 'metabox_fields' (array)  => The CMB2 fields that will display within the
- *                              metabox.
+ * 'metabox'  (array) => The CMB2 meta box configuration array.
+ * 'fields'   (array) => The CMB2 fields that will display within the meta box.
  *
  * @see https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress/wiki/Field-Types
  */

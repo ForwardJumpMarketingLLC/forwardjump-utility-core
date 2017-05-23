@@ -128,6 +128,7 @@ class ComposerStaticInit02e0cbd27dfbd809cec0edda258b7bff
         'ForwardJump\\Utility\\PostMetaboxes\\Post_Metabox' => __DIR__ . '/../..' . '/src/post-metaboxes/class-post-metabox.php',
         'ForwardJump\\Utility\\Settings\\Settings_Page' => __DIR__ . '/../..' . '/src/settings/class-settings.php',
         'ForwardJump\\Utility\\Shortcodes\\Add_Shortcode' => __DIR__ . '/../..' . '/src/shortcodes/class-add-shortcode.php',
+        'ForwardJump\\Utility\\TermMetaboxes\\Term_Metabox' => __DIR__ . '/../..' . '/src/term-metaboxes/class-term-metabox.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

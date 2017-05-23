@@ -95,4 +95,5 @@ return array(
     'ForwardJump\\Utility\\PostMetaboxes\\Post_Metabox' => $baseDir . '/src/post-metaboxes/class-post-metabox.php',
     'ForwardJump\\Utility\\Settings\\Settings_Page' => $baseDir . '/src/settings/class-settings.php',
     'ForwardJump\\Utility\\Shortcodes\\Add_Shortcode' => $baseDir . '/src/shortcodes/class-add-shortcode.php',
+    'ForwardJump\\Utility\\TermMetaboxes\\Term_Metabox' => $baseDir . '/src/term-metaboxes/class-term-metabox.php',
 );

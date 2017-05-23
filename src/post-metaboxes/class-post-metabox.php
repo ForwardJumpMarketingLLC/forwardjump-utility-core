@@ -1,6 +1,6 @@
 <?php
 /**
- * Genesis CMB2 Post Metaboxes
+ * CMB2 Post Metaboxes
  *
  * @package     ForwardJump\Utility
  * @author      Tim Jensen <tim@forwardjump.com>
@@ -44,6 +44,15 @@ class Post_Metabox {
 	public function __construct( array $config ) {
 		$this->metabox_config = (array) $config['metabox'];
 		$this->fields_config  = (array) $config['fields'];
+
+		$this->metabox_config['title'] = isset( $this->metabox_config['title'] ) ? __( $this->metabox_config['title'], FJ_UTILITY_TEXT_DOMAIN ) : '';
+
+		static $count = 0;
+		$count ++;
+
+		if ( empty( $this->metabox_config['id'] ) ) {
+			$this->metabox_config['id'] = "fj_utility_metabox-{$count}";
+		}
 	}
 
 	/**
@@ -63,18 +72,9 @@ class Post_Metabox {
 	 * @return void.
 	 */
 	public function init_metabox() {
-
-		static $count = 0;
-		$count ++;
-
-		if ( empty( $this->metabox_config['id'] ) ) {
-			$this->metabox_config['id'] = "fj_utility_metabox-{$count}";
-		}
-
 		$cmb = new_cmb2_box( (array) $this->metabox_config );
 
 		foreach ( (array) $this->fields_config as $field_args ) {
-
 			$field_args['name'] = __( $field_args['name'], FJ_UTILITY_TEXT_DOMAIN );
 
 			// Set our CMB2 fields.
