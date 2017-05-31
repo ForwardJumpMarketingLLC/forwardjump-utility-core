@@ -221,11 +221,11 @@ class Settings_Page {
 
 		foreach ( $this->metabox_fields as $field ) {
 			if ( ! empty( $field['name'] ) ) {
-				$field['name'] = __( $field['name'], FJ_SETTINGS_PAGES_TEXT_DOMAIN );
+				$field['name'] = __( $field['name'], FJ_UTILITY_TEXT_DOMAIN );
 			}
 
 			if ( ! empty( $field['desc'] ) ) {
-				$field['desc'] = __( $field['desc'], FJ_SETTINGS_PAGES_TEXT_DOMAIN );
+				$field['desc'] = __( $field['desc'], FJ_UTILITY_TEXT_DOMAIN );
 			}
 
 			$cmb->add_field( $field );
