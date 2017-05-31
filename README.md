@@ -26,7 +26,7 @@ The general concept of this plugin is to separate all of the project specific el
 Add settings pages to the WordPress Admin menu.  Refer to the sample configuration file in `/src/post-metaboxes/config/` to see the required format of the array as well as the options for where the settings page appears (e.g., top-level menu or several submenu options, including Genesis).
 
 ```php
-$setting_config = [
+$settings_config = [
 	[
 		'capability'         => 'manage_options',
 		'menu_page_type'     => 'submenu',
@@ -55,7 +55,7 @@ $setting_config = [
 ];
 
 foreach ( (array) $settings_config as $setting ) {
-    ( new ForwardJump\Utility\Settings\Settings_Page( $setting ) )->init();
+    ( new \ForwardJump\Utility\Settings\Settings_Page( $setting ) )->init();
 }
 ```
 
@@ -87,7 +87,7 @@ $metabox_config = [
 ];
 
 foreach ( (array) $metabox_config as $metabox ) {
-    ( new ForwardJump\Utility\PostMetaboxes\Post_Metabox( $metabox ) )->init();
+    ( new \ForwardJump\Utility\PostMetaboxes\Post_Metabox( $metabox ) )->init();
 }
 ```
 
@@ -115,7 +115,7 @@ $metabox_config = [
 ];
 
 foreach ( (array) $metabox_config as $metabox ) {
-    ( new ForwardJump\Utility\TermMetaboxes\Term_Metabox( $metabox ) )->init();
+    ( new \ForwardJump\Utility\TermMetaboxes\Term_Metabox( $metabox ) )->init();
 }
 ```
 
@@ -146,7 +146,7 @@ $genesis_theme_settings_config = [
 ];
 
 foreach ( (array) $genesis_theme_settings_config as $metabox ) {
-    ( new ForwardJump\Utility\GenesisAdminMetaboxes\Genesis_Theme_Settings_Meta_Box( $metabox ) )->init();
+    ( new \ForwardJump\Utility\GenesisAdminMetaboxes\Genesis_Theme_Settings_Meta_Box( $metabox ) )->init();
 }
 ```
 
@@ -173,7 +173,7 @@ $genesis_cpt_archive_settings_config = [
 ];
 
 foreach ( (array) $genesis_cpt_archive_settings_config as $metabox ) {
-    ( new ForwardJump\Utility\GenesisAdminMetaboxes\Genesis_CPT_Archives_Meta_Box( $metabox ) )->init();
+    ( new \ForwardJump\Utility\GenesisAdminMetaboxes\Genesis_CPT_Archives_Meta_Box( $metabox ) )->init();
 }
 ```
 
@@ -203,7 +203,7 @@ $cpts_config = [
 ];
 
 foreach ( (array) $cpts_config as $cpt ) {
-    ( new ForwardJump\Utility\CustomPostTypes\Custom_Post_Type( $cpt ) )->init();
+    ( new \ForwardJump\Utility\CustomPostTypes\Custom_Post_Type( $cpt ) )->init();
 }
 ```
 
@@ -230,7 +230,7 @@ $tax_config = [
 ];
 
 foreach ( (array) $tax_config as $tax ) {
-    ( new ForwardJump\Utility\CustomTaxonomies\Custom_Taxonomy( $tax ) )->init();
+    ( new \ForwardJump\Utility\CustomTaxonomies\Custom_Taxonomy( $tax ) )->init();
 }
 ```
 
@@ -258,7 +258,7 @@ $shortcodes_config = [
 ];
 
 foreach ( (array) $shortcodes_config as $shortcode ) {
-    ( new ForwardJump\Utility\Shortcodes\Add_Shortcode( $shortcode ) )->init();
+    ( new \ForwardJump\Utility\Shortcodes\Add_Shortcode( $shortcode ) )->init();
 }
 ```
 
