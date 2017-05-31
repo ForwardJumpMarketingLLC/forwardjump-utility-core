@@ -24,5 +24,12 @@ return [
 			'post_type' => 'post',
 		],
 		'view' => FJ_UTILITY_SHORTCODES_DIR . 'views/recent-posts.php',
+		'scripts' => [
+			[
+				'handle' => 'fj-scripts',
+				'src'    => 'https://code.jquery.com/jquery-3.2.1.min.js',
+				'ver'    => '0.1.0',
+			],
+		],
 	],
 ];

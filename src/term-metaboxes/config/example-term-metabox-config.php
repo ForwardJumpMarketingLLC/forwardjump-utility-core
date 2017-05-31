@@ -29,7 +29,7 @@ return [
 				'name'  => 'Featured Image',
 				'id'    => 'featured_image',
 				'type'  => 'file',
-				'allow' => array( 'attachment' ),
+				'allow' => [ 'attachment' ],
 			],
 		],
 	],
