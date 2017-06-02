@@ -155,7 +155,7 @@ class Settings_Page {
 	}
 
 	/**
-	 * Register our setting to WP
+	 * Register our setting to WP.
 	 *
 	 * @since  0.1.0
 	 */
@@ -164,7 +164,7 @@ class Settings_Page {
 	}
 
 	/**
-	 * Add menu options page
+	 * Add menu options page.
 	 *
 	 * @since 0.1.0
 	 */

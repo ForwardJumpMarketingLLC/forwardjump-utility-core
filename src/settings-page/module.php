@@ -27,7 +27,7 @@ function init() {
 		return;
 	}
 
-	$config = include FJ_UTILITY_SETTINGS_DIR . 'config/settings-config.php';
+	$config = include FJ_UTILITY_CONFIG_DIR . 'settings-page-config.php';
 	$config = apply_filters( 'fj_utility_core_settings_config', $config );
 
 	foreach ( (array) $config as $setting ) {

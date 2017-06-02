@@ -35,6 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'FJ_UTILITY_TEXT_DOMAIN', 'forwardjump-utility' );
 define( 'FJ_UTILITY_DIR', __DIR__ . '/' );
+define( 'FJ_UTILITY_CONFIG_DIR', __DIR__ . '/config/' );
 define( 'FJ_UTILITY_FILE', __FILE__ );
 
 require_once FJ_UTILITY_DIR . 'vendor/autoload.php';

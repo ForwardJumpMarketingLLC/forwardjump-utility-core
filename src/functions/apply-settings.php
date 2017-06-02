@@ -53,7 +53,7 @@ function apply_enabled_options() {
 		add_action( 'genesis_meta', __NAMESPACE__ . '\\add_noindex_meta_tags' );
 
 		if ( is_admin() ) {
-			$config = include FJ_UTILITY_DIR . 'src/post-metaboxes/config/exclude-from-wp-list-pages.php';
+			$config = include FJ_UTILITY_CONFIG_DIR . 'exclude-from-wp-list-pages.php';
 			$config = apply_filters( 'fj_utility_core_exclude_from_list_pages', $config );
 
 			( new Post_Metabox( $config ) )->init();

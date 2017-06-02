@@ -23,7 +23,7 @@ add_action( 'init', __NAMESPACE__ . '\register_shortcodes' );
  */
 function register_shortcodes() {
 
-	$config = include FJ_UTILITY_SHORTCODES_DIR . 'config/shortcodes-config.php';
+	$config = include FJ_UTILITY_CONFIG_DIR . 'shortcodes-config.php';
 	$config = apply_filters( 'fj_utility_core_shortcodes_config', $config );
 
 	foreach ( (array) $config as $shortcode_config ) {

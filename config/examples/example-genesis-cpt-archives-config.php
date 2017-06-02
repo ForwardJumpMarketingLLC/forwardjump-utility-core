@@ -24,7 +24,7 @@ return [
 	[
 		'metabox' => [
 			'title'        => 'Example Genesis CPT Settings CMB2 meta box', // String. Translation function is handled by the class.
-			'object_types' => [ 'new-post-type', 'new-post-type-2' ], // Array. CPT slug(s).
+			'object_types' => [ 'example-cpt' ], // Array. CPT slug(s).
 			'priority'     => 'high', // 'high' or 'low'.
 			'show_names'   => true, // Bool.
 			'cmb2_styles'  => true, // Bool.

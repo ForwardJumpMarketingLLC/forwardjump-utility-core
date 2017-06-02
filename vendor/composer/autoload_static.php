@@ -12,7 +12,7 @@ class ComposerStaticInit02e0cbd27dfbd809cec0edda258b7bff
         '90b23edb1086ecb674690b3923c903d3' => __DIR__ . '/../..' . '/src/functions/gravity-forms.php',
         '54fee958f28caab4d626af9160abe482' => __DIR__ . '/../..' . '/src/functions/helper-functions.php',
         '5232377bcbc8fcba1a3d576c569415ed' => __DIR__ . '/../..' . '/src/functions/plugin.php',
-        '59829d59bb12e766cfbe9e4b8c23650d' => __DIR__ . '/../..' . '/src/settings/module.php',
+        'bdf9c5c862c67c8923c53959d54b66e8' => __DIR__ . '/../..' . '/src/settings-page/module.php',
         '7292dafdb6328bffaaec4aee1c978879' => __DIR__ . '/../..' . '/src/shortcodes/module.php',
     );
 
@@ -126,7 +126,7 @@ class ComposerStaticInit02e0cbd27dfbd809cec0edda258b7bff
         'ForwardJump\\Utility\\GenesisAdminMetaboxes\\Genesis_CPT_Archives_Meta_Box' => __DIR__ . '/../..' . '/src/genesis-admin-metaboxes/class-genesis-cpt-archive-settings-meta-box.php',
         'ForwardJump\\Utility\\GenesisAdminMetaboxes\\Genesis_Theme_Settings_Meta_Box' => __DIR__ . '/../..' . '/src/genesis-admin-metaboxes/class-genesis-theme-settings-meta-box.php',
         'ForwardJump\\Utility\\PostMetaboxes\\Post_Metabox' => __DIR__ . '/../..' . '/src/post-metaboxes/class-post-metabox.php',
-        'ForwardJump\\Utility\\Settings\\Settings_Page' => __DIR__ . '/../..' . '/src/settings/class-settings.php',
+        'ForwardJump\\Utility\\Settings\\Settings_Page' => __DIR__ . '/../..' . '/src/settings-page/class-settings-page.php',
         'ForwardJump\\Utility\\Shortcodes\\Add_Shortcode' => __DIR__ . '/../..' . '/src/shortcodes/class-add-shortcode.php',
         'ForwardJump\\Utility\\TermMetaboxes\\Term_Metabox' => __DIR__ . '/../..' . '/src/term-metaboxes/class-term-metabox.php',
     );

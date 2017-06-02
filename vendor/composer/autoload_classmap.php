@@ -93,7 +93,7 @@ return array(
     'ForwardJump\\Utility\\GenesisAdminMetaboxes\\Genesis_CPT_Archives_Meta_Box' => $baseDir . '/src/genesis-admin-metaboxes/class-genesis-cpt-archive-settings-meta-box.php',
     'ForwardJump\\Utility\\GenesisAdminMetaboxes\\Genesis_Theme_Settings_Meta_Box' => $baseDir . '/src/genesis-admin-metaboxes/class-genesis-theme-settings-meta-box.php',
     'ForwardJump\\Utility\\PostMetaboxes\\Post_Metabox' => $baseDir . '/src/post-metaboxes/class-post-metabox.php',
-    'ForwardJump\\Utility\\Settings\\Settings_Page' => $baseDir . '/src/settings/class-settings.php',
+    'ForwardJump\\Utility\\Settings\\Settings_Page' => $baseDir . '/src/settings-page/class-settings-page.php',
     'ForwardJump\\Utility\\Shortcodes\\Add_Shortcode' => $baseDir . '/src/shortcodes/class-add-shortcode.php',
     'ForwardJump\\Utility\\TermMetaboxes\\Term_Metabox' => $baseDir . '/src/term-metaboxes/class-term-metabox.php',
 );
