@@ -35,7 +35,7 @@
             "src/functions/gravity-forms.php",
             "src/functions/helper-functions.php",
             "src/functions/plugin.php",
-            "src/settings/module.php",
+            "src/settings-page/module.php",
             "src/shortcodes/module.php"
         ]
     }
