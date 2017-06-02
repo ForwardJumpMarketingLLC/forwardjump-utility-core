@@ -90,7 +90,15 @@ abstract class Genesis_CMB2_Admin_Meta_Box {
 	 * @return void
 	 */
 	protected function set_properties( array $config ) {
-		$this->metabox_config  = $config['metabox'];
+		static $count = 0;
+		$count ++;
+
+		$this->metabox_config = $config['metabox'];
+
+		if ( empty( $this->metabox_config['id'] ) ) {
+			$this->metabox_config['id'] = "genesis-$this->admin_page-{$count}";
+		}
+
 		$this->fields_config   = $config['fields'];
 		$this->use_cmb2_styles = isset( $config['metabox']['cmb2_styles'] ) ? $config['metabox']['cmb2_styles'] : false;
 	}
@@ -138,12 +146,7 @@ abstract class Genesis_CMB2_Admin_Meta_Box {
 	 * @return \CMB2 instance.
 	 */
 	public function init_metabox() {
-
-		static $count = 0;
-		$count ++;
-
 		$overrides = [
-			'id'           => "genesis-$this->admin_page-{$count}",
 			'title'        => __( $this->metabox_config['title'], FJ_UTILITY_TEXT_DOMAIN ),
 			'hookup'       => false, // Handled with $this->add_sanitized_values().
 			'cmb_styles'   => false, // Handled with $this->admin_hooks().
