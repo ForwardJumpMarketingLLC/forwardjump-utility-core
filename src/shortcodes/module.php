@@ -15,8 +15,6 @@ if ( ! defined( 'FJ_UTILITY_SHORTCODES_DIR' ) ) {
 	define( 'FJ_UTILITY_SHORTCODES_DIR', __DIR__ . '/' );
 }
 
-include_once FJ_UTILITY_SHORTCODES_DIR . 'class-add-shortcode.php';
-
 add_action( 'init', __NAMESPACE__ . '\register_shortcodes' );
 /**
  * Register shortcodes.
