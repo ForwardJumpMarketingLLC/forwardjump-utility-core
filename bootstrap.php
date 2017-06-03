@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: ForwardJump Utility - CORE
- * Plugin URI: https://bitbucket.org/forwardjump/forwardjump-utility-core
+ * Plugin URI: https://github.com/ForwardJumpMarketingLLC/forwardjump-utility-core
  * Description: The ForwardJump core functionality plugin.
  *
  * Version: 1.2.0
@@ -18,10 +18,10 @@
  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
  * or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * Text Domain: forwardjump-utility
+ * Text Domain: forwardjump-utility-core
  *
- * BitBucket Plugin URI: https://bitbucket.org/forwardjump/forwardjump-utility-core
- * BitBucket branch: master
+ * GitHub Plugin URI: https://github.com/ForwardJumpMarketingLLC/forwardjump-utility-core
+ * GitHub branch: master
  *
  * @package ForwardJump\Utility
  * PHP Version 5.4
@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-define( 'FJ_UTILITY_TEXT_DOMAIN', 'forwardjump-utility' );
+define( 'FJ_UTILITY_TEXT_DOMAIN', 'forwardjump-utility-core' );
 define( 'FJ_UTILITY_DIR', __DIR__ . '/' );
 define( 'FJ_UTILITY_CONFIG_DIR', __DIR__ . '/config/' );
 define( 'FJ_UTILITY_FILE', __FILE__ );
