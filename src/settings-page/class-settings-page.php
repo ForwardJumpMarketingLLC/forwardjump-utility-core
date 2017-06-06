@@ -203,7 +203,7 @@ class Settings_Page {
 	 *
 	 * @since  0.1.0
 	 */
-	function add_options_page_metabox() {
+	public function add_options_page_metabox() {
 
 		if ( empty( $this->metabox_fields ) ) {
 			return;
