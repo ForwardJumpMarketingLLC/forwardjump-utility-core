@@ -25,9 +25,8 @@ return [
 		'metabox' => [
 			'title'        => 'Example Genesis Theme Settings CMB2 meta box', // String. Translation function is handled by the class.
 			'priority'     => 'high', // 'high' or 'low'.
-			'show_names'   => true, // Bool.
-			'cmb2_styles'  => true, // Bool.
-			'closed'       => false, // Bool.
+			'show_names'   => true,
+			'closed'       => false,
 			'classes'      => 'extra-classes',
 		],
 		'fields'  => [
