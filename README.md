@@ -65,7 +65,7 @@ foreach ( (array) $settings_config as $setting ) {
 ### Add Custom Meta Boxes
 Add custom meta boxes using [CMB2](https://github.com/CMB2/CMB2) to a variety of screens within the WordPress Admin.
 
-**Limitations**: Group (i.e., repeater) fields are not currently supported.
+Group fields are now supported.
 
 #### Post Edit Screen
 Custom meta boxes can be added to any post edit screen (including CPTs) by passing an array to `ForwardJump\Utility\PostMetaboxes\Post_Metabox()`. Refer to the example configuration file in `/config/examples/` to see the required format of the array.
