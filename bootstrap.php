@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/ForwardJumpMarketingLLC/forwardjump-utility-core
  * Description: The ForwardJump core functionality plugin.
  *
- * Version: 1.2.0
+ * Version: 1.2.1
  *
  * Author: Tim Jensen
  * Author URI: https://forwardjump.com/
@@ -37,5 +37,6 @@ define( 'FJ_UTILITY_TEXT_DOMAIN', 'forwardjump-utility-core' );
 define( 'FJ_UTILITY_DIR', __DIR__ . '/' );
 define( 'FJ_UTILITY_CONFIG_DIR', __DIR__ . '/config/' );
 define( 'FJ_UTILITY_FILE', __FILE__ );
+define( 'FJ_UTILITY_URL', plugins_url( null, __FILE__ ) );
 
 require_once FJ_UTILITY_DIR . 'vendor/autoload.php';
