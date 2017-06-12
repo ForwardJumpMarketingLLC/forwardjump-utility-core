@@ -23,13 +23,12 @@ namespace ForwardJump\Utility\Functions;
  *
  * @link    https://www.timjensen.us/acf-get-field-alternative/
  *
- * @version 1.2.1
+ * @version 1.2.2
  *
  * @param integer $post_id Required. Post ID.
  * @param array   $config  Required. An array that represents the structure of
  *                         the custom fields. Follows the same format as the
  *                         ACF export field groups array.
- *
  * @return array
  */
 function get_all_custom_field_meta( $post_id, array $config ) {
@@ -38,7 +37,7 @@ function get_all_custom_field_meta( $post_id, array $config ) {
 
 	foreach ( $config as $field ) {
 
-		if ( ! isset( $field['name'] ) ) {
+		if ( empty( $field['name'] ) ) {
 			continue;
 		}
 
@@ -65,7 +64,7 @@ function get_all_custom_field_meta( $post_id, array $config ) {
 					$field_config['meta_key_prefix'] = $meta_key . "_{$key}_";
 				}
 
-				$results[] = array_merge(
+				$results[ $field['name'] ][] = array_merge(
 					[
 						'acf_fc_layout' => $current_layout_type,
 					],
