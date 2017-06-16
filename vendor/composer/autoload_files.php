@@ -6,11 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '240b5162fce10eb746a21f362eb3975f' => $vendorDir . '/CMB2/init.php',
-    '29ae5241f185d3404f5620f20da2e13d' => $baseDir . '/src/functions/apply-settings.php',
-    '90b23edb1086ecb674690b3923c903d3' => $baseDir . '/src/functions/gravity-forms.php',
-    '54fee958f28caab4d626af9160abe482' => $baseDir . '/src/functions/helper-functions.php',
-    '5232377bcbc8fcba1a3d576c569415ed' => $baseDir . '/src/functions/plugin.php',
-    'bdf9c5c862c67c8923c53959d54b66e8' => $baseDir . '/src/settings-page/module.php',
-    '7292dafdb6328bffaaec4aee1c978879' => $baseDir . '/src/shortcodes/module.php',
+    '4066dffe6d2aaa103b61dde605654980' => $baseDir . '/src/functions/apply-settings.php',
+    '9c9dc34de430da8d8a424ed494190b35' => $baseDir . '/src/functions/gravity-forms.php',
+    '1a2fda453f570e68d0c886721c2cb5e4' => $baseDir . '/src/functions/helper-functions.php',
+    '238b2ecc083acb5a3c6f4183d113588e' => $baseDir . '/src/functions/plugin.php',
+    '9bdabe970529603343c0aba9ef066b0d' => $baseDir . '/src/settings-page/module.php',
+    'f41e4cd299823a158838057be2a489e9' => $baseDir . '/src/shortcodes/module.php',
 );
