@@ -39,4 +39,8 @@ define( 'FJ_UTILITY_CONFIG_DIR', __DIR__ . '/config/' );
 define( 'FJ_UTILITY_FILE', __FILE__ );
 define( 'FJ_UTILITY_URL', plugins_url( null, __FILE__ ) );
 
+if ( is_admin() ) {
+	require FJ_UTILITY_DIR . 'vendor/CMB2/init.php';
+}
+
 require_once FJ_UTILITY_DIR . 'vendor/autoload.php';

@@ -30,7 +30,6 @@
             "ForwardJump\\Utility\\": "src/"
         },
         "files": [
-            "vendor/CMB2/init.php",
             "src/functions/apply-settings.php",
             "src/functions/gravity-forms.php",
             "src/functions/helper-functions.php",
