@@ -36,7 +36,7 @@ class Custom_Post_Type {
 	 *
 	 * @since 0.1.1
 	 *
-	 * @var array
+	 * @var string
 	 */
 	private $post_type = '';
 
@@ -47,7 +47,7 @@ class Custom_Post_Type {
 	 *
 	 * @var array
 	 */
-	private $args = '';
+	private $args = [];
 
 	/**
 	 * Custom_Post_Type constructor.
