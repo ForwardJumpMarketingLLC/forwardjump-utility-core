@@ -42,7 +42,7 @@ class Custom_Taxonomy {
 	 *
 	 * @since 0.1.2
 	 *
-	 * @var bool|mixed|string
+	 * @var array
 	 */
 	private $object_type = [];
 
