@@ -140,6 +140,10 @@ class Settings_Page {
 		if ( empty( $this->option_group ) ) {
 			$this->option_group = $this->option_name;
 		}
+
+		if ( ! empty( $this->metabox_fields ) && empty( $this->metabox_id ) ) {
+			$this->metabox_id = uniqid();
+		}
 	}
 
 	/**
@@ -150,6 +154,11 @@ class Settings_Page {
 	public function init() {
 		add_action( 'admin_init', array( $this, 'register_setting' ) );
 		add_action( 'admin_menu', array( $this, 'add_options_page' ), $this->menu_page_priority );
+
+		if ( empty( $this->metabox_fields ) ) {
+			return;
+		}
+
 		add_action( 'cmb2_admin_init', array( $this, 'add_options_page_metabox' ) );
 		add_action( "cmb2_save_options-page_fields_{$this->metabox_id}", array( $this, 'settings_notices' ), 10, 2 );
 	}

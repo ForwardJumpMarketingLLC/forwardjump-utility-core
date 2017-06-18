@@ -30,8 +30,8 @@ namespace ForwardJump\Utility\Settings;
  * 'page_title'         (string) => Title of the options page.
  * 'option_name'        (string) => This is the unique option ID that will be saved in the database.
  * 'option_group'       (string) => Optional. Defaults to 'option_name'.
- * 'metabox_id'         (string) => A unique metabox ID.
- * 'metabox_fields'     (array)  => The CMB2 fields will appear in the options page form.
+ * 'metabox_id'         (string) => Optional. A unique metabox ID.
+ * 'metabox_fields'     (array)  => Optional. The CMB2 fields will appear in the options page form.
  * 'view_file'          (string) => Full path to the view file.
  */
 return [
