@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     '4066dffe6d2aaa103b61dde605654980' => $baseDir . '/src/functions/apply-settings.php',
+    '09f167eb15dd1e65a2e24145393845b4' => $baseDir . '/src/functions/formatting.php',
     '9c9dc34de430da8d8a424ed494190b35' => $baseDir . '/src/functions/gravity-forms.php',
     '1a2fda453f570e68d0c886721c2cb5e4' => $baseDir . '/src/functions/helper-functions.php',
     '238b2ecc083acb5a3c6f4183d113588e' => $baseDir . '/src/functions/plugin.php',
