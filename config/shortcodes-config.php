@@ -29,6 +29,10 @@ return [
 				'handle' => 'fj-scripts',
 				'src'    => 'https://code.jquery.com/jquery-3.2.1.min.js',
 				'ver'    => '0.1.0',
+//				'localize_script' => [
+//					'data'   => defaults to shortcode atts,
+//					'encode' => optional encoding,
+//				],
 			],
 		],
 	],

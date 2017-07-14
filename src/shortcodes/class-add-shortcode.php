@@ -33,6 +33,13 @@ class Add_Shortcode {
 	protected $args;
 
 	/**
+	 * Combined and filtered attribute list.
+	 *
+	 * @var null
+	 */
+	protected $atts;
+
+	/**
 	 * Path to the view file used for rendering the data.
 	 *
 	 * @var null
@@ -50,6 +57,7 @@ class Add_Shortcode {
 	 * Add_Shortcode constructor.
 	 *
 	 * @param $config
+	 *
 	 * @return void
 	 */
 	public function __construct( $config ) {
@@ -66,19 +74,27 @@ class Add_Shortcode {
 	 */
 	public function init() {
 		add_shortcode( $this->tag, [ $this, 'shortcode_callback' ] );
+		add_filter( 'the_content', [ $this, 'strip_empty_p_and_br_tags' ] );
 	}
 
 	/**
 	 * Shortcode callback to run when the shortcode is found.
 	 *
 	 * @param array|null $atts User defined attributes in shortcode tag.
+	 *
 	 * @return string
 	 */
-	public function shortcode_callback( $atts ) {
+	public function shortcode_callback( $atts, $content = '' ) {
+
+		$this->atts = shortcode_atts( (array) $this->args, (array) $atts, $this->tag );
+
+		$atts = $this->atts;
 
 		$this->enqueue_scripts();
 
-		$atts = shortcode_atts( (array) $this->args, (array) $atts, $this->tag );
+		if ( empty( $this->view ) ) {
+			return;
+		}
 
 		ob_start();
 
@@ -92,17 +108,17 @@ class Add_Shortcode {
 	 *
 	 * @return void
 	 */
-	public function enqueue_scripts() {
+	protected function enqueue_scripts() {
 
 		if ( empty( $this->scripts ) ) {
 			return;
 		}
 
 		$defaults = [
-			'handle'    => null,
-			'src'       => null,
-			'deps'      => [ 'jquery' ],
-			'ver'       => false,
+			'handle' => null,
+			'src'    => null,
+			'deps'   => [ 'jquery' ],
+			'ver'    => false,
 		];
 
 		foreach ( (array) $this->scripts as $script ) {
@@ -114,6 +130,57 @@ class Add_Shortcode {
 			}
 
 			wp_enqueue_script( $args['handle'], $args['src'], $args['deps'], $args['ver'], true );
+
+			if ( isset( $script['localize_script'] ) ) {
+				$this->localize_scripts( $script );
+			}
 		}
+	}
+
+	/**
+	 * Localizes the registered script with data.
+	 *
+	 * @param array $script Arguments for the script that is being enqueued.
+	 */
+	protected function localize_scripts( array $script ) {
+		$data = empty( $script['localize_script']['data'] ) ? $this->atts : $script['localize_script']['data'];
+
+		if ( ! empty( $script['localize_script']['encode'] ) ) {
+			$encoding = $script['localize_script']['encode'];
+
+			foreach ( (array) $data as $key => $item ) {
+				$data[ $key ] = call_user_func_array(
+					"{$encoding}_encode",
+					[ wp_kses( trim( $item ), [] ) ]
+				);
+			}
+		}
+
+		$object_name = str_replace( '-', '_', $script['handle'] . '-data' );
+
+		wp_localize_script( $script['handle'], $object_name, $data );
+	}
+
+	/**
+	 * Filters the content to remove any extra paragraph or break tags
+	 * caused by shortcodes.
+	 *
+	 * @author Thomas Griffin
+	 * @link   https://thomasgriffin.io/remove-empty-paragraph-tags-shortcodes-wordpress/
+	 * @since  1.0.0
+	 *
+	 * @param string $content String of HTML content.
+	 *
+	 * @return string $content Amended string of HTML content.
+	 */
+	function strip_empty_p_and_br_tags( $content ) {
+
+		$array = array(
+			'<p>['    => '[',
+			']</p>'   => ']',
+			']<br />' => ']',
+		);
+
+		return strtr( $content, $array );
 	}
 }
