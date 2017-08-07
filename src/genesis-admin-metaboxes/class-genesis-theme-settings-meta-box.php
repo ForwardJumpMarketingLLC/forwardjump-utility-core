@@ -28,10 +28,11 @@ class Genesis_Theme_Settings_Meta_Box extends Genesis_CMB2_Admin_Meta_Box {
 	 * @param array $config Meta box configuration array.
 	 */
 	protected function set_properties( array $config ) {
-		parent::set_properties( $config );
 
 		$this->option_keys[] = 'genesis-settings';
 		$this->admin_hooks[] = 'toplevel_page_genesis';
 		$this->admin_page    = 'theme_settings';
+
+		parent::set_properties( $config );
 	}
 }

@@ -26,8 +26,6 @@ class Genesis_CPT_Archives_Meta_Box extends Genesis_CMB2_Admin_Meta_Box {
 	 * @param array $config Meta box configuration array.
 	 */
 	protected function set_properties( array $config ) {
-		parent::set_properties( $config );
-
 		$this->admin_page = 'cpt_archives_settings';
 
 		$object_types = $config['metabox']['object_types'];
@@ -35,5 +33,7 @@ class Genesis_CPT_Archives_Meta_Box extends Genesis_CMB2_Admin_Meta_Box {
 			$this->admin_hooks[] = sprintf( '%1$s_page_genesis-cpt-archive-%1$s', $object_type );
 			$this->option_keys[] = sprintf( 'genesis-cpt-archive-settings-%s', $object_type );
 		}
+
+		parent::set_properties( $config );
 	}
 }
