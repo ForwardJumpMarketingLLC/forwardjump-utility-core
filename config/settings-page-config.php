@@ -67,6 +67,13 @@ return [
 				'type'    => 'checkbox',
 			],
 			[
+				'name'    => 'Show post info',
+				'desc'    => 'Limit the visibility of post info (date, author, etc.). Enter \'true\' to show post info on all posts, \'false\' to remove post info from all posts, or a comma separated list of category and/or post tag terms to show post info only on posts that are associated with those terms.',
+				'id'      => 'genesis_show_post_info',
+				'type'    => 'text_medium',
+				'default' => 'true',
+			],
+			[
 				'name'    => 'Header Scripts',
 				'desc'    => 'Add scripts to be rendered in the page header',
 				'id'      => 'header_scripts',

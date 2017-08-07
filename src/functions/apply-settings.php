@@ -59,11 +59,35 @@ function apply_enabled_options() {
 			( new Post_Metabox( $config ) )->init();
 		}
 	}
+
+	if ( ! empty( $fj_options['genesis_show_post_info'] ) && 'true' !== $fj_options['genesis_show_post_info'] ) {
+
+		add_filter( 'genesis_post_info', function ( $post_info ) use ( $fj_options ) {
+
+			$selected_terms = explode( ',', $fj_options['genesis_show_post_info'] );
+
+			if ( ! is_single() ) {
+				return false;
+			}
+
+			$post_terms = wp_get_object_terms(
+				get_the_ID(),
+				[ 'category', 'post_tag' ],
+				[ 'fields' => 'slugs' ]
+			);
+
+			if ( empty( array_intersect( (array) $post_terms, $selected_terms ) ) ) {
+				return false;
+			}
+
+			return $post_info;
+		}, 99, 1 );
+	}
 }
 
 /**
- * Show an error message to remind admins to make production sites public to search engines,
- * and staging sites hidden from search engines.
+ * Show an error message to remind admins to make production sites public to
+ * search engines, and staging sites hidden from search engines.
  *
  * @since 0.4.2
  *
@@ -71,27 +95,34 @@ function apply_enabled_options() {
  */
 add_action( 'admin_notices', function () {
 
-	$is_blog_public = get_option( 'blog_public' );
-	$is_dev_site = preg_match( '/(dev|staging|localhost)/i', home_url() );
+	$is_blog_public      = get_option( 'blog_public' );
+	$is_dev_site         = preg_match( '/(dev|staging|localhost)/i', home_url() );
 	$options_reading_url = get_admin_url( null, 'options-reading.php' );
 
 	if ( ! $is_blog_public && ! $is_dev_site ) {
 		?>
 		<div class="notice error">
-			<p>Search engines are discouraged. If this is a production site, make sure to change the search engine visibility under <a href="<?php echo esc_url( $options_reading_url ); ?>">Reading Settings</a>.</p>
+			<p>Search engines are discouraged. If this is a production site,
+				make sure to change the search engine visibility under <a
+					href="<?php echo esc_url( $options_reading_url ); ?>">Reading
+					Settings</a>.</p>
 		</div>
 		<?php
 	} elseif ( $is_blog_public && $is_dev_site ) {
 		?>
 		<div class="notice error">
-			<p>Search engines are encouraged. If this is a staging site, make sure to discourage search engine visibility under <a href="<?php echo esc_url( $options_reading_url ); ?>">Reading Settings</a>.</p>
+			<p>Search engines are encouraged. If this is a staging site, make
+				sure to discourage search engine visibility under <a
+					href="<?php echo esc_url( $options_reading_url ); ?>">Reading
+					Settings</a>.</p>
 		</div>
 		<?php
 	}
 } );
 
 /**
- * Adds noindex meta tags to pages that have been designated to hide on 404 pages.
+ * Adds noindex meta tags to pages that have been designated to hide on 404
+ * pages.
  *
  * @return void
  */
@@ -114,6 +145,7 @@ function add_noindex_meta_tags() {
  * Excludes selected pages from being listed using `wp_list_pages()`.
  *
  * @param array $exclude_array Page IDs to exclude from `wp_list_pages()`.
+ *
  * @return array
  */
 function exclude_pages_from_wp_list_pages( $exclude_array ) {
@@ -129,7 +161,7 @@ function exclude_pages_from_wp_list_pages( $exclude_array ) {
 				'compare' => 'IN',
 			),
 		),
-		'fields' => 'ids',
+		'fields'      => 'ids',
 	) );
 
 	wp_reset_postdata();

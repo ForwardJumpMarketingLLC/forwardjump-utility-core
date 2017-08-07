@@ -8,6 +8,7 @@ class ComposerStaticInit02e0cbd27dfbd809cec0edda258b7bff
 {
     public static $files = array (
         '4066dffe6d2aaa103b61dde605654980' => __DIR__ . '/../..' . '/src/functions/apply-settings.php',
+        'fbd9bc2a4f3c9fab407a95b917906c34' => __DIR__ . '/../..' . '/src/functions/enqueue.php',
         '09f167eb15dd1e65a2e24145393845b4' => __DIR__ . '/../..' . '/src/functions/formatting.php',
         '9c9dc34de430da8d8a424ed494190b35' => __DIR__ . '/../..' . '/src/functions/gravity-forms.php',
         '1a2fda453f570e68d0c886721c2cb5e4' => __DIR__ . '/../..' . '/src/functions/helper-functions.php',
