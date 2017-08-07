@@ -75,7 +75,13 @@ class Post_Metabox {
 		$cmb = new_cmb2_box( (array) $this->metabox_config );
 
 		foreach ( (array) $this->fields_config as $field_args ) {
-			$field_args['name'] = __( $field_args['name'], FJ_UTILITY_TEXT_DOMAIN );
+			if ( ! empty( $field_args['name'] ) ) {
+				$field_args['name'] = __( $field_args['name'], FJ_UTILITY_TEXT_DOMAIN );
+			}
+
+			if ( ! empty( $field_args['description'] ) ) {
+				$field_args['description'] = __( $field_args['description'], FJ_UTILITY_TEXT_DOMAIN );
+			}
 
 			// Set our CMB2 fields.
 			$cmb->add_field( $field_args );
