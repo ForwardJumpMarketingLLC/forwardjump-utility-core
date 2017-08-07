@@ -1,0 +1,9 @@
+@media (min-width: 451px) {
+    .cmb2-metabox .cmb-td {
+        max-width: calc(100% - 250px);
+    }
+
+    .cmb2-metabox .cmb2-metabox-description {
+        color: #777;
+    }
+}
