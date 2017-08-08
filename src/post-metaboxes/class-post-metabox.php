@@ -35,6 +35,13 @@ class Post_Metabox {
 	protected $fields_config = [];
 
 	/**
+	 * Meta box counter.
+	 *
+	 * @var int
+	 */
+	protected static $count = 0;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 0.1.0
@@ -42,15 +49,39 @@ class Post_Metabox {
 	 * @param array $config Metabox configuration array.
 	 */
 	public function __construct( array $config ) {
+		$this->set_properties( $config );
+	}
+
+	/**
+	 * Set the class properties.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param array $config Meta box configuration array.
+	 * @return void
+	 */
+	protected function set_properties( array $config ) {
 		$this->metabox_config = (array) $config['metabox'];
 		$this->fields_config  = (array) $config['fields'];
 
 		$this->metabox_config['title'] = isset( $this->metabox_config['title'] ) ? __( $this->metabox_config['title'], FJ_UTILITY_TEXT_DOMAIN ) : '';
 
-		static $count = 0;
-		$count ++;
+		$this->set_metabox_id();
+	}
+
+	/**
+	 * Sets the metabox id.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @return void
+	 */
+	protected function set_metabox_id() {
 
 		if ( empty( $this->metabox_config['id'] ) ) {
+			self::$count++;
+			$count = self::$count;
+
 			$this->metabox_config['id'] = "fj_utility_metabox-{$count}";
 		}
 	}
@@ -69,7 +100,7 @@ class Post_Metabox {
 	 *
 	 * @since  0.1.0
 	 *
-	 * @return void.
+	 * @return object
 	 */
 	public function init_metabox() {
 		$cmb = new_cmb2_box( (array) $this->metabox_config );
@@ -86,5 +117,7 @@ class Post_Metabox {
 			// Set our CMB2 fields.
 			$cmb->add_field( $field_args );
 		}
+
+		return $cmb;
 	}
 }

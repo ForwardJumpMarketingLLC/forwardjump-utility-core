@@ -11,6 +11,7 @@
  */
 
 namespace ForwardJump\Utility\GenesisAdminMetaboxes;
+use ForwardJump\Utility\PostMetaboxes\Post_Metabox;
 
 /**
  * Class Genesis_CMB2_Admin_Meta_Box
@@ -19,21 +20,7 @@ namespace ForwardJump\Utility\GenesisAdminMetaboxes;
  *
  * @package ForwardJump\GenesisCMB2
  */
-abstract class Genesis_CMB2_Admin_Meta_Box {
-
-	/**
-	 * Meta box config.
-	 *
-	 * @var array
-	 */
-	protected $metabox_config = [];
-
-	/**
-	 * Fields config.
-	 *
-	 * @var array
-	 */
-	protected $fields_config = [];
+abstract class Genesis_CMB2_Admin_Meta_Box extends Post_Metabox {
 
 	/**
 	 * Use CMB2 styles to style the meta boxes and fields.
@@ -64,22 +51,16 @@ abstract class Genesis_CMB2_Admin_Meta_Box {
 	protected $option_keys = [];
 
 	/**
+	 * @var int
+	 */
+	protected static $count = 0;
+
+	/**
 	 * Holds an instance of the CMB2 object.
 	 *
 	 * @var \CMB2 object.
 	 */
 	private $cmb2_instance;
-
-	/**
-	 * Constructor
-	 *
-	 * @since 0.1.0
-	 *
-	 * @param array $config Meta box configuration array.
-	 */
-	public function __construct( array $config ) {
-		$this->set_properties( $config );
-	}
 
 	/**
 	 * Set the class properties.
@@ -90,17 +71,26 @@ abstract class Genesis_CMB2_Admin_Meta_Box {
 	 * @return void
 	 */
 	protected function set_properties( array $config ) {
-		static $count = 0;
-		$count ++;
+		parent::set_properties( $config );
 
-		$this->metabox_config = $config['metabox'];
+		$this->use_cmb2_styles = isset( $config['metabox']['cmb_styles'] ) ? $config['metabox']['cmb_styles'] : true;
+	}
+
+	/**
+	 * Sets the metabox id.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @return void
+	 */
+	protected function set_metabox_id() {
 
 		if ( empty( $this->metabox_config['id'] ) ) {
+			self::$count++;
+			$count = self::$count;
+
 			$this->metabox_config['id'] = "genesis-$this->admin_page-{$count}";
 		}
-
-		$this->fields_config   = $config['fields'];
-		$this->use_cmb2_styles = isset( $config['metabox']['cmb_styles'] ) ? $config['metabox']['cmb_styles'] : true;
 	}
 
 	/**
@@ -111,8 +101,8 @@ abstract class Genesis_CMB2_Admin_Meta_Box {
 	 * @return void
 	 */
 	public function init() {
+		parent::init();
 		add_action( 'admin_menu', [ $this, 'admin_hooks' ] );
-		add_action( 'cmb2_admin_init', [ $this, 'init_metabox' ] );
 	}
 
 	/**

@@ -11,6 +11,28 @@
 class Test_Dependencies extends WP_UnitTestCase {
 
 	/**
+	 * Set up.
+	 */
+	function setUp() {
+		parent::setUp();
+
+		set_current_screen( 'edit-post' );
+
+		// Require the plugin bootstrap file so that the CMB2 dependency
+		// is read into memory.
+		require FJ_UTILITY_FILE;
+		$cmb_init = \CMB2_Bootstrap_2251::initiate();
+		$cmb_init->include_cmb();
+	}
+
+	/**
+	 * Tear down.
+	 */
+	function tearDown() {
+		parent::tearDown();
+	}
+
+	/**
 	 * Plugin constants are defined.
 	 */
 	function test_are_constants_defined() {
