@@ -15,6 +15,14 @@ class Test_Classes extends WP_UnitTestCase {
 	 */
 	function setUp() {
 		parent::setUp();
+
+		set_current_screen( 'edit-post' );
+
+		// Require the plugin bootstrap file so that the CMB2 dependency
+		// is read into memory.
+		require FJ_UTILITY_FILE;
+		$cmb_init = \CMB2_Bootstrap_2251::initiate();
+		$cmb_init->include_cmb();
 	}
 
 	/**
@@ -63,10 +71,13 @@ class Test_Classes extends WP_UnitTestCase {
 		$metabox['metabox']['id'] = 'fj_test_genesis_cpt_metabox';
 
 		$genesis_cpt_metabox = new \ForwardJump\Utility\GenesisAdminMetaboxes\Genesis_CPT_Archives_Meta_Box( $metabox );
+
 		$this->assertInstanceOf( 'ForwardJump\Utility\GenesisAdminMetaboxes\Genesis_CPT_Archives_Meta_Box', $genesis_cpt_metabox );
 
 		$genesis_cpt_metabox->init_metabox();
+
 		$cmb = cmb2_get_metabox( $metabox['metabox']['id'] );
+
 		$this->assertEquals( $metabox['metabox']['id'], $cmb->meta_box['id'] );
 	}
 
@@ -79,10 +90,13 @@ class Test_Classes extends WP_UnitTestCase {
 		$metabox['metabox']['id'] = 'fj_test_genesis_theme_metabox';
 
 		$genesis_theme_metabox = new \ForwardJump\Utility\GenesisAdminMetaboxes\Genesis_Theme_Settings_Meta_Box( $metabox );
+
 		$this->assertInstanceOf( 'ForwardJump\Utility\GenesisAdminMetaboxes\Genesis_Theme_Settings_Meta_Box', $genesis_theme_metabox );
 
 		$genesis_theme_metabox->init_metabox();
+
 		$cmb = cmb2_get_metabox( $metabox['metabox']['id'] );
+
 		$this->assertEquals( $metabox['metabox']['id'], $cmb->meta_box['id'] );
 	}
 
@@ -95,9 +109,10 @@ class Test_Classes extends WP_UnitTestCase {
 		$metabox['metabox']['id'] = 'fj_test_post_metabox';
 
 		$post_metabox = new \ForwardJump\Utility\PostMetaboxes\Post_Metabox( $metabox );
+		$post_metabox->init_metabox();
+
 		$this->assertInstanceOf( 'ForwardJump\Utility\PostMetaboxes\Post_Metabox', $post_metabox );
 
-		$post_metabox->init_metabox();
 		$cmb = cmb2_get_metabox( $metabox['metabox']['id'] );
 		$this->assertEquals( $metabox['metabox']['id'], $cmb->meta_box['id'] );
 	}
