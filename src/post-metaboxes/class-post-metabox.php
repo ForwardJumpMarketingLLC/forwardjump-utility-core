@@ -35,6 +35,8 @@ class Post_Metabox {
 	protected $fields_config = [];
 
 	/**
+	 * Meta box counter.
+	 *
 	 * @var int
 	 */
 	protected static $count = 0;
