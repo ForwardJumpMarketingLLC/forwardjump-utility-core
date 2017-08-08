@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d0daad585c71b5cd4f41e8c11621332",
+    "content-hash": "c2c00bb336aca85f9436ca662b1af062",
     "packages": [
         {
             "name": "composer/installers",
@@ -122,16 +122,16 @@
         },
         {
             "name": "webdevstudios/cmb2",
-            "version": "v2.2.4",
+            "version": "v2.2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CMB2/CMB2.git",
-                "reference": "badecc7f908781ac14b879c74526f9d055f4a41e"
+                "reference": "e851dc664083bfb94166629b621b24b1e789fab7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CMB2/CMB2/zipball/badecc7f908781ac14b879c74526f9d055f4a41e",
-                "reference": "badecc7f908781ac14b879c74526f9d055f4a41e",
+                "url": "https://api.github.com/repos/CMB2/CMB2/zipball/e851dc664083bfb94166629b621b24b1e789fab7",
+                "reference": "e851dc664083bfb94166629b621b24b1e789fab7",
                 "shasum": ""
             },
             "require": {
@@ -154,16 +154,28 @@
                     "email": "contact@webdevstudios.com",
                     "homepage": "https://github.com/WebDevStudios",
                     "role": "Developer"
+                },
+                {
+                    "name": "Justin Sternberg",
+                    "email": "justin@dsgnwrks.pro",
+                    "homepage": "https://dsgnwrks.pro",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Zao",
+                    "email": "office@zao.com",
+                    "homepage": "http://zao.is",
+                    "role": "Developer"
                 }
             ],
             "description": "CMB2 is a metabox, custom fields, and forms library for WordPress that will blow your mind.",
-            "homepage": "https://github.com/WebDevStudios/CMB2",
+            "homepage": "https://github.com/CMB2/CMB2",
             "keywords": [
                 "metabox",
                 "plugin",
                 "wordpress"
             ],
-            "time": "2017-02-27T15:05:31+00:00"
+            "time": "2017-08-07T18:19:17+00:00"
         }
     ],
     "packages-dev": [],
