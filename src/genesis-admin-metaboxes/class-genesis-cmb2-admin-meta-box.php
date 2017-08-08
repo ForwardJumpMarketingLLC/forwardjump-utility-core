@@ -85,7 +85,7 @@ abstract class Genesis_CMB2_Admin_Meta_Box extends Post_Metabox {
 	 */
 	protected function set_metabox_id() {
 
-		if ( empty( $config['metabox']['id'] ) ) {
+		if ( empty( $this->metabox_config['id'] ) ) {
 			self::$count++;
 			$count = self::$count;
 
