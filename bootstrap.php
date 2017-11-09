@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/ForwardJumpMarketingLLC/forwardjump-utility-core
  * Description: The ForwardJump core functionality plugin.
  *
- * Version: 1.5.0
+ * Version: 1.5.1
  *
  * Author: Tim Jensen
  * Author URI: https://forwardjump.com/
@@ -24,7 +24,7 @@
  * GitHub branch: master
  *
  * @package ForwardJump\Utility
- * PHP Version 5.4
+ * PHP Version 5.6
  */
 
 namespace ForwardJump\Utility;
@@ -55,5 +55,7 @@ array_walk( $constants, function ( $value, $constant ) {
 if ( is_admin() ) {
 	require_once FJ_UTILITY_DIR . 'vendor/CMB2/init.php';
 }
+
+require FJ_UTILITY_DIR . 'vendor/timothyjensen/acf-field-group-values/acf-field-group-values.php';
 
 require_once FJ_UTILITY_DIR . 'vendor/autoload.php';

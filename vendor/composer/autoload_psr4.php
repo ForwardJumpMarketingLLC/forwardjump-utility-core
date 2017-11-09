@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'TimJensen\\ACF\\' => array($vendorDir . '/timothyjensen/acf-field-group-values/src'),
     'ForwardJump\\Utility\\' => array($baseDir . '/src'),
     'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
 );

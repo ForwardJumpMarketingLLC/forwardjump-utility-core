@@ -4,7 +4,7 @@ Donate link:       https://cmb2.io
 Tags:              metaboxes, forms, fields, options, settings
 Requires at least: 3.8.0
 Tested up to:      4.8.1
-Stable tag:        2.2.5
+Stable tag:        2.2.5.3
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,20 +121,43 @@ FAQ's usually end up in the [github wiki](https://github.com/CMB2/CMB2/wiki).
 
 == Changelog ==
 
+### 2.2.5.3
+
+#### Enhancements
+
+* Update to instead initate CMB2 hookup via "cmb2_init_hookup_{$cmb_id}" hook. Allows plugins to unhook/rehook/etc.
+
+#### Bug Fixes
+
+* Spelling/Grammar fixes. Props [@garrett-eclipse](https://github.com/garrett-eclipse) ([#1012](https://github.com/CMB2/CMB2/pull/1012)).
+* Fix "PHP Strict Standards: Static function should not be abstract" notice.
+* Add `CMB2_Utils::normalize_if_numeric()` to address problems when using floats as select/radio values. Fixes [#869](https://github.com/CMB2/CMB2/issues/869). See [#1013](https://github.com/CMB2/CMB2/pull/1013).
+* Fix issues with apostrophes in money values. (e.g. in Swiss German the thousand separator is an apostrophe). Props [@ocean90](https://github.com/ocean90) ([#1014](https://github.com/CMB2/CMB2/issues/1014), [#1015](https://github.com/CMB2/CMB2/pull/1015)).
+* Provide public access to the `CMB2_Options_Hookup::$option_key` property.
+* Change the updated-settings notice query variable so that WordPress does not auto-add settings notices on top of ours.
+* For settings pages, only output settings errors if WordPress does not do it by default (for sub-pages of `options-general.php`), and if the errors are not disabled via the `'disable_settings_errors'` box property.
+
+### 2.2.5.2
+
+#### Bug Fixes
+
+* Fix issue in 2.2.5 with non-sortable repeatable groups not having new groups values be emptied on creation/clone.
+* Fix issue in 2.2.5 with options pages not saving when parent_slug was used. Fixes [#1008](https://github.com/CMB2/CMB2/issues/1008).
+
 ### 2.2.5.1
 
-### Bug Fixes
+#### Bug Fixes
 
 * Fix issue in 2.2.5 which caused empty repeatable groups having the buttons set to have a disabled "Remove Group" button.
 
 ### 2.2.5 - 2017-08-07
 
-### Enhancements
+#### Enhancements
 
 * Options pages are now first-class CMB2 citizens, and registering a box to show on an options page will automatically register the menu page and output the form on the page. [See example](https://github.com/CMB2/CMB2/blob/v2.2.5/example-functions.php#L640-L683). (The [snippets](https://github.com/CMB2/CMB2-Snippet-Library/tree/master/options-and-settings-pages) in the snippet library will be updated to reflect this change)
 * Improved Options Page styling. Props [@anhskohbo](https://github.com/anhskohbo) ([#1006](https://github.com/CMB2/CMB2/pull/1006)).
 * Improved cohesive styles for repeatable fields. Props [@anhskohbo](https://github.com/anhskohbo) ([#819](https://github.com/CMB2/CMB2/pull/819)).
-* New field types, `'taxonomy_radio_hierarchical'`, and `'taxonomy_multicheck_hierarchical'`, for displaying taxonomy options in a hierarchial layout. Props to [eriktelepovsky](https://github.com/eriktelepovsky) for the [working code](https://github.com/CMB2/CMB2/issues/640#issuecomment-246938690). ([#640](https://github.com/CMB2/CMB2/issues/640))
+* New field types, `'taxonomy_radio_hierarchical'`, and `'taxonomy_multicheck_hierarchical'`, for displaying taxonomy options in a hierarchical layout. Props to [eriktelepovsky](https://github.com/eriktelepovsky) for the [working code](https://github.com/CMB2/CMB2/issues/640#issuecomment-246938690). ([#640](https://github.com/CMB2/CMB2/issues/640))
 * Removing last repeat item row (and repeat group row) is now somewhat allowed in that the "remove" button simply resets the last item to empty. Fixes [#312](https://github.com/CMB2/CMB2/issues/312).
 * Enable the additional media library modal filters. Fixes [#873](https://github.com/CMB2/CMB2/issues/873).
 * Sanitize the attributes added via the `cmb2_group_wrap_attributes` filter.
@@ -160,7 +183,7 @@ FAQ's usually end up in the [github wiki](https://github.com/CMB2/CMB2/wiki).
 	* `CMB2::after_save()`
 	* `CMB2::add_fields()`
 
-### Bug Fixes
+#### Bug Fixes
 
 * Update for `file`/`file_list` fields to properly show a preview for SVG images. Fixes [#874](https://github.com/CMB2/CMB2/pull/874).
 * Fix and standardize inconsistent button classes. Update all buttons to use the `.button-secondary` class instead of the `.button` class. This alleviates some front-end issues for themes which target the `.button` class. _This is a backwards-compatibility break._ If your theme or plugin targets the `.button` class within CMB2, you will need to update to use `.button-secondary`.
@@ -384,7 +407,7 @@ FAQ's usually end up in the [github wiki](https://github.com/CMB2/CMB2/wiki).
 #### Enhancements
 
 * Updated/Added many translations. Props [fxbenard](https://github.com/fxbenard), ([#203](https://github.com/CMB2/CMB2/pull/344)) and [Mte90](https://github.com/Mte90) for the Italian translation.
-* Updated `'file_list'` field type to have a more intutive selection in the media library, and updated the 'Use file' text in the button. Props [SteveHoneyNZ](https://github.com/SteveHoneyNZ) ([#357](https://github.com/CMB2/CMB2/pull/357), [#358](https://github.com/CMB2/CMB2/pull/358)).
+* Updated `'file_list'` field type to have a more intuitive selection in the media library, and updated the 'Use file' text in the button. Props [SteveHoneyNZ](https://github.com/SteveHoneyNZ) ([#357](https://github.com/CMB2/CMB2/pull/357), [#358](https://github.com/CMB2/CMB2/pull/358)).
 * `'closed'` group field option parameter introduced in order to set the groups as collapsed by default. Requested in [#391](https://github.com/CMB2/CMB2/issues/391).
 * Added `"cmb2_{$object_type}_process_fields_{$cmb_id}"` hook for hooking in and modifying the metabox or fields before the fields are processed/sanitized for saving.
 * Added Comment Metabox support. Props [GregLancaster71](https://github.com/GregLancaster71) ([#238](https://github.com/CMB2/CMB2/pull/238), [#244](https://github.com/CMB2/CMB2/pull/244)).
@@ -609,7 +632,7 @@ FAQ's usually end up in the [github wiki](https://github.com/CMB2/CMB2/wiki).
 * New filter, `cmb_localized_data`, for modifiying localized data passed to the CMB JS.
 
 ##### Bug Fixes
-* Resolved occasional issue where only the first character of the label/value was diplayed. props [@mustardBees](https://github.com/mustardBees), ([#486](https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress/pull/486))
+* Resolved occasional issue where only the first character of the label/value was displayed. props [@mustardBees](https://github.com/mustardBees), ([#486](https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress/pull/486))
 
 
 ### 1.0.2 - 2014-03-03
@@ -632,7 +655,7 @@ It is now passed a null value vs saved value. If null is returned, default sanit
 * Fix undeclared JS variable. [@veelen](https://github.com/veelen), ([#451](https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress/pull/451))
 * Fix `file_list` errors when removing all files and saving.
 * Set correct `object_id` to be used later in `cmb_show_on` filter. [@lauravaq](https://github.com/lauravaq), ([#445](https://github.com/WebDevStudios/Custom-Metaboxes-and-Fields-for-WordPress/pull/445))
-* Fix sanitization recursion memeory issues.
+* Fix sanitization recursion memory issues.
 
 ### 1.0.1 - 2014-01-24
 
@@ -733,20 +756,43 @@ It is now passed a null value vs saved value. If null is returned, default sanit
 
 == Upgrade Notice ==
 
+### 2.2.5.3
+
+#### Enhancements
+
+* Update to instead initate CMB2 hookup via "cmb2_init_hookup_{$cmb_id}" hook. Allows plugins to unhook/rehook/etc.
+
+#### Bug Fixes
+
+* Spelling/Grammar fixes. Props [@garrett-eclipse](https://github.com/garrett-eclipse) ([#1012](https://github.com/CMB2/CMB2/pull/1012)).
+* Fix "PHP Strict Standards: Static function should not be abstract" notice.
+* Add `CMB2_Utils::normalize_if_numeric()` to address problems when using floats as select/radio values. Fixes [#869](https://github.com/CMB2/CMB2/issues/869). See [#1013](https://github.com/CMB2/CMB2/pull/1013).
+* Fix issues with apostrophes in money values. (e.g. in Swiss German the thousand separator is an apostrophe). Props [@ocean90](https://github.com/ocean90) ([#1014](https://github.com/CMB2/CMB2/issues/1014), [#1015](https://github.com/CMB2/CMB2/pull/1015)).
+* Provide public access to the `CMB2_Options_Hookup::$option_key` property.
+* Change the updated-settings notice query variable so that WordPress does not auto-add settings notices on top of ours.
+* For settings pages, only output settings errors if WordPress does not do it by default (for sub-pages of `options-general.php`), and if the errors are not disabled via the `'disable_settings_errors'` box property.
+
+### 2.2.5.2
+
+#### Bug Fixes
+
+* Fix issue in 2.2.5 with non-sortable repeatable groups not having new groups values be emptied on creation/clone.
+* Fix issue in 2.2.5 with options pages not saving when parent_slug was used. Fixes [#1008](https://github.com/CMB2/CMB2/issues/1008).
+
 ### 2.2.5.1
 
-### Bug Fixes
+#### Bug Fixes
 
 * Fix issue in 2.2.5 which caused empty repeatable groups having the buttons set to have a disabled "Remove Group" button.
 
 ### 2.2.5 - 2017-08-07
 
-### Enhancements
+#### Enhancements
 
 * Options pages are now first-class CMB2 citizens, and registering a box to show on an options page will automatically register the menu page and output the form on the page. [See example](https://github.com/CMB2/CMB2/blob/v2.2.5/example-functions.php#L640-L683). (The [snippets](https://github.com/CMB2/CMB2-Snippet-Library/tree/master/options-and-settings-pages) in the snippet library will be updated to reflect this change)
 * Improved Options Page styling. Props [@anhskohbo](https://github.com/anhskohbo) ([#1006](https://github.com/CMB2/CMB2/pull/1006)).
 * Improved cohesive styles for repeatable fields. Props [@anhskohbo](https://github.com/anhskohbo) ([#819](https://github.com/CMB2/CMB2/pull/819)).
-* New field types, `'taxonomy_radio_hierarchical'`, and `'taxonomy_multicheck_hierarchical'`, for displaying taxonomy options in a hierarchial layout. Props to [eriktelepovsky](https://github.com/eriktelepovsky) for the [working code](https://github.com/CMB2/CMB2/issues/640#issuecomment-246938690). ([#640](https://github.com/CMB2/CMB2/issues/640))
+* New field types, `'taxonomy_radio_hierarchical'`, and `'taxonomy_multicheck_hierarchical'`, for displaying taxonomy options in a hierarchical layout. Props to [eriktelepovsky](https://github.com/eriktelepovsky) for the [working code](https://github.com/CMB2/CMB2/issues/640#issuecomment-246938690). ([#640](https://github.com/CMB2/CMB2/issues/640))
 * Removing last repeat item row (and repeat group row) is now somewhat allowed in that the "remove" button simply resets the last item to empty. Fixes [#312](https://github.com/CMB2/CMB2/issues/312).
 * Enable the additional media library modal filters. Fixes [#873](https://github.com/CMB2/CMB2/issues/873).
 * Sanitize the attributes added via the `cmb2_group_wrap_attributes` filter.
@@ -772,7 +818,7 @@ It is now passed a null value vs saved value. If null is returned, default sanit
 	* `CMB2::after_save()`
 	* `CMB2::add_fields()`
 
-### Bug Fixes
+#### Bug Fixes
 
 * Update for `file`/`file_list` fields to properly show a preview for SVG images. Fixes [#874](https://github.com/CMB2/CMB2/pull/874).
 * Fix and standardize inconsistent button classes. Update all buttons to use the `.button-secondary` class instead of the `.button` class. This alleviates some front-end issues for themes which target the `.button` class. _This is a backwards-compatibility break._ If your theme or plugin targets the `.button` class within CMB2, you will need to update to use `.button-secondary`.
