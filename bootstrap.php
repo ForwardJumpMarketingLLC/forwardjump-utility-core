@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/ForwardJumpMarketingLLC/forwardjump-utility-core
  * Description: The ForwardJump core functionality plugin.
  *
- * Version: 1.5.1
+ * Version: 1.5.2
  *
  * Author: Tim Jensen
  * Author URI: https://forwardjump.com/

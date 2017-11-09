@@ -119,46 +119,6 @@
         ]
     },
     {
-        "name": "timothyjensen/acf-field-group-values",
-        "version": "1.4.0",
-        "version_normalized": "1.4.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/timothyjensen/acf-field-group-values.git",
-            "reference": "12c3c880ecf4cc5fdd9bb1e618dbac2c6a66f605"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/timothyjensen/acf-field-group-values/zipball/12c3c880ecf4cc5fdd9bb1e618dbac2c6a66f605",
-            "reference": "12c3c880ecf4cc5fdd9bb1e618dbac2c6a66f605",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^5.6 || ^7.0"
-        },
-        "time": "2017-11-08T18:39:30+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "TimJensen\\ACF\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0+"
-        ],
-        "authors": [
-            {
-                "name": "Tim Jensen",
-                "email": "tim@timjensen.us",
-                "homepage": "https://www.timjensen.us",
-                "role": "Developer"
-            }
-        ],
-        "description": "Retrieve all post meta and option values for the specified ACF field group"
-    },
-    {
         "name": "webdevstudios/cmb2",
         "version": "v2.2.5.3",
         "version_normalized": "2.2.5.3",
@@ -216,5 +176,45 @@
             "plugin",
             "wordpress"
         ]
+    },
+    {
+        "name": "timothyjensen/acf-field-group-values",
+        "version": "1.4.1",
+        "version_normalized": "1.4.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/timothyjensen/acf-field-group-values.git",
+            "reference": "6480768d614279721d86f0511cb01ae473e677ec"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/timothyjensen/acf-field-group-values/zipball/6480768d614279721d86f0511cb01ae473e677ec",
+            "reference": "6480768d614279721d86f0511cb01ae473e677ec",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.6 || ^7.0"
+        },
+        "time": "2017-11-09T15:51:48+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "TimJensen\\ACF\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Tim Jensen",
+                "email": "tim@timjensen.us",
+                "homepage": "https://www.timjensen.us",
+                "role": "Developer"
+            }
+        ],
+        "description": "Retrieve all post meta and option values for the specified ACF field group"
     }
 ]
