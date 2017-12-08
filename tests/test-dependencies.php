@@ -21,7 +21,7 @@ class Test_Dependencies extends WP_UnitTestCase {
 		// Require the plugin bootstrap file so that the CMB2 dependency
 		// is read into memory.
 		require FJ_UTILITY_FILE;
-		$cmb_init = \CMB2_Bootstrap_2251::initiate();
+		$cmb_init = \CMB2_Bootstrap_2262::initiate();
 		$cmb_init->include_cmb();
 	}
 
