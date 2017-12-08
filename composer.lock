@@ -125,16 +125,16 @@
         },
         {
             "name": "timothyjensen/acf-field-group-values",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timothyjensen/acf-field-group-values.git",
-                "reference": "3c171b82818312c5f3e8ceaf737d6a230b5d538f"
+                "reference": "2971456337fb2a821c6d8630a57a35af547d3f22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timothyjensen/acf-field-group-values/zipball/3c171b82818312c5f3e8ceaf737d6a230b5d538f",
-                "reference": "3c171b82818312c5f3e8ceaf737d6a230b5d538f",
+                "url": "https://api.github.com/repos/timothyjensen/acf-field-group-values/zipball/2971456337fb2a821c6d8630a57a35af547d3f22",
+                "reference": "2971456337fb2a821c6d8630a57a35af547d3f22",
                 "shasum": ""
             },
             "require": {
@@ -162,7 +162,7 @@
                 }
             ],
             "description": "Retrieve all post meta and option values for the specified ACF field group",
-            "time": "2017-11-30T12:29:31+00:00"
+            "time": "2017-12-08T19:28:11+00:00"
         },
         {
             "name": "webdevstudios/cmb2",
