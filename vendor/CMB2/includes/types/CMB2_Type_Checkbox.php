@@ -31,9 +31,7 @@ class CMB2_Type_Checkbox extends CMB2_Type_Text {
 		parent::__construct( $types, $args );
 		$this->is_checked = $is_checked;
 	}
-	/**
-	 * This is a test remark so I can deploy this.
-  */
+
 	public function render( $args = array() ) {
 		$defaults = array(
 			'type'  => 'checkbox',
